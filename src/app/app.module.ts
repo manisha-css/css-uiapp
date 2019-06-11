@@ -5,24 +5,38 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HealthCheckComponent } from './health-check/health-check.component';
-import { HttpClientModule } from '@angular/common/http';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptor } from './common/exceptions/http-error.interceptor';
+import { ExceptionsComponent } from './common/exceptions/exceptions.component';
+import { ExceptionGeneralComponent } from './common/exceptions/exceptions-general/exceptions-general.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HealthCheckComponent
+    HealthCheckComponent,
+    // common-exceptions
+    ExceptionsComponent,
+    ExceptionGeneralComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     LoggerModule.forRoot({
-      level: !environment.production ? NgxLoggerLevel.DEBUG : NgxLoggerLevel.ERROR,
+      level: !environment.production
+        ? NgxLoggerLevel.DEBUG
+        : NgxLoggerLevel.ERROR,
       serverLogLevel: NgxLoggerLevel.OFF
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

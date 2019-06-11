@@ -18,17 +18,16 @@ export class HealthCheckComponent implements OnInit {
   }
 
   getHealthCheckResponse() {
-    this.healthCheckService.getServerResponse()
-      .subscribe(
-        response => {
-          this.logger.debug('Received respnse from server [' + response.result + ']');
-          this.result = response.result;
-        },
-        error => {
-          this.logger.error('Error in getting respnse from server');
-          console.log('error' + error);
-        }
-      );
+    this.healthCheckService.getServerResponse().subscribe(
+      response => {
+        this.logger.debug(
+          'Received respnse from server [' + response.result + ']'
+        );
+        this.result = response.result;
+      },
+      () => {
+      }
+    );
   }
 
 }
