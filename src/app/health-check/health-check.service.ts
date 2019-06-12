@@ -2,7 +2,7 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpWrapperService } from '../common/http-wrapper.service';
 
 
 @Injectable({
@@ -10,9 +10,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HealthCheckService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpWrapperService: HttpWrapperService) {}
+
 
   getServerResponse(): Observable<any> {
-    return this.httpClient.get(environment.WEBSERVICE_URL + '/healthcheck');
+    return this.httpWrapperService.httpGet(environment.WEBSERVICE_URL + '/healthcheck');
   }
 }

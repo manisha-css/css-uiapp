@@ -17,6 +17,7 @@ import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { NotificationService } from './common/notification/notification.service';
+import { HttpWrapperService } from './common/http-wrapper.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { NotificationService } from './common/notification/notification.service'
   providers: [
     MessageService,
     NotificationService,
+    HttpWrapperService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
