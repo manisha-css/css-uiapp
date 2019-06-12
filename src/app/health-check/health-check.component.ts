@@ -1,3 +1,4 @@
+import { NotificationService } from './../common/notification/notification.service';
 
 import { Component, OnInit } from '@angular/core';
 import { HealthCheckService } from './health-check.service';
@@ -11,9 +12,11 @@ export class HealthCheckComponent implements OnInit {
   result: string;
   constructor(
     private logger: NGXLogger,
-    private healthCheckService: HealthCheckService) { }
+    private healthCheckService: HealthCheckService,
+    public notificationService: NotificationService) { }
 
   ngOnInit() {
+    this.notificationService.clearAllNotifications();
     this.getHealthCheckResponse();
   }
 
@@ -21,13 +24,16 @@ export class HealthCheckComponent implements OnInit {
     this.healthCheckService.getServerResponse().subscribe(
       response => {
         this.logger.debug(
-          'Received respnse from server [' + response.result + ']'
+          'Received respnse from server [' + response.message + ']'
         );
-        this.result = response.result;
+        this.result = response.message;
+        this.notificationService.showNotificationToast(
+          this.notificationService.SEVERITY_SUCCESS,
+          this.notificationService.SUMMERY_SUCCESS,
+          this.result);
       },
       () => {
       }
     );
   }
-
 }

@@ -10,11 +10,16 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { NGXLogger } from 'ngx-logger';
 import { Router } from '@angular/router';
+import { NotificationService } from '../notification/notification.service';
+import { ConstantService } from '../constant.service';
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor( 
+  constructor(
     public router: Router,
-    private logger: NGXLogger) {}
+    private notificationService: NotificationService,
+    private logger: NGXLogger,
+    private constantService: ConstantService
+  ) {}
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -27,19 +32,29 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         } else {
           // backend returns errorResponse with message
           if (error.status === 0) {
-              // status returned will be 0 if backend server is not running
-            this.logger.error('Backend server seems to be down, please try again later');
+            // status returned will be 0 if backend server is not running
+            this.logger.error(
+              this.constantService.BACKEND_SERVER_DOWN
+            );
+            this.notificationService.showNotificationMessages(
+              this.notificationService.SEVERITY_ERROR,
+              this.notificationService.SUMMERY_ERROR,
+              this.constantService.BACKEND_SERVER_DOWN
+            );
             return throwError(error);
           }
-          this.logger.error(
-            'Backend returned Status[: ' +
-              error.status +
-              '], Message: [' +
-              error.error.message +
-              '], Timestamp: [' +
-              error.error.timestamp +
-              ']'
-          );
+          if (error.error === undefined || error.error === null) {
+            this.notificationService.showNotificationMessages(this.notificationService.SEVERITY_ERROR,
+              this.notificationService.SUMMERY_ERROR, error.message);
+              this.logger.error( 'Error Status[: ' + error.status + '], Message: [' + error.message
+                + '], Timestamp: [' + error.error.timestamp + ']' );
+          } else {
+            this.notificationService.showNotificationMessages(this.notificationService.SEVERITY_ERROR,
+              this.notificationService.SUMMERY_ERROR, error.error.message);
+              this.logger.error( 'Error Status[: ' + error.status + '], Message: [' + error.error.message
+                + '], Timestamp: [' + error.error.timestamp + ']' );
+          }
+
         }
 
         // return the error on the upper level:
