@@ -5,11 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './exceptions.component.html'
 })
 export class ExceptionsComponent implements OnInit {
+  constructor() {}
 
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

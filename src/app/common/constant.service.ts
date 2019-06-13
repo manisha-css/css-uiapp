@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConstantService {
-
-  constructor() { }
+  constructor() {}
 
   // error messages
   public BACKEND_SERVER_DOWN = 'Backend server seems to be down, please try again later';

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HealthCheckComponent } from './health-check/health-check.component';
+import { RouterModule, Routes } from '@angular/router';
 import { ExceptionsComponent } from './common/exceptions/exceptions.component';
 import { EXCEPTION_ROUTES } from './common/exceptions/exceptions.routes';
+import { HealthCheckComponent } from './health-check/health-check.component';
 
 const routes: Routes = [
   { path: 'healthcheck', component: HealthCheckComponent },
@@ -17,4 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

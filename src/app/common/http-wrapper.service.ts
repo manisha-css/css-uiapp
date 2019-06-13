@@ -1,5 +1,5 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class HttpWrapperService {
@@ -14,31 +14,31 @@ export class HttpWrapperService {
 
   httpGet(url: string) {
     const headers = this.addHttptHeader();
-    return this.httpClient.get(url, { headers: headers });
+    return this.httpClient.get(url, { headers });
   }
 
   httpGetWithParams(url: string, params: HttpParams) {
     const headers = this.addHttptHeader();
-    return this.httpClient.get(url, { headers: headers, params: params });
+    return this.httpClient.get(url, { headers, params });
   }
 
   httpPost(url: string, body: any) {
     const headers = this.addHttptHeader();
-    return this.httpClient.post(url, body, { headers: headers });
+    return this.httpClient.post(url, body, { headers });
   }
 
   httpPostWithParams(url: string, body: any, params: HttpParams) {
     const headers = this.addHttptHeader();
-    return this.httpClient.post(url, body, { headers: headers, params: params });
+    return this.httpClient.post(url, body, { headers, params });
   }
 
   httpPut(url: string, body: any) {
     const headers = this.addHttptHeader();
-    return this.httpClient.put(url, body, { headers: headers });
+    return this.httpClient.put(url, body, { headers });
   }
 
   httpDelete(url: string) {
     const headers = this.addHttptHeader();
-    return this.httpClient.delete(url, { headers: headers });
+    return this.httpClient.delete(url, { headers });
   }
 }
