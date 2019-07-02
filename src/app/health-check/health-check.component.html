@@ -1,5 +1,5 @@
-<p-toast [style]="{marginTop: '80px'}"></p-toast>
+<p-toast key="toast" [style]="{marginTop: '80px'}"></p-toast>
 <p>
-  <p-messages [(value)]="notificationService.notification_msgs" [enableService]="false"></p-messages>
-  Healthcheck Server Result: {{result}}
+  <p-messages key="msg"></p-messages>
+  <ng-container i18n="healthcheckResult|Health Check Result@@healthcheckResult">Healthcheck Server Result:</ng-container> {{result}}
 </p>

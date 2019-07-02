@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
-import { environment } from './../../environments/environment';
+import { ConstantService } from 'src/app/common/constant.service';
+import { environment } from '../../environments/environment';
 
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HttpWrapperService } from '../common/http-wrapper.service';
+import { InfoResponse } from '../common/inforresponse.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HealthCheckService {
-  constructor(private httpWrapperService: HttpWrapperService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private constantService: ConstantService // private httpWrapperService: HttpWrapperService
+  ) {}
 
-  getServerResponse(): Observable<any> {
-    return this.httpWrapperService.httpGet(environment.WEBSERVICE_URL + '/healthcheck');
+  getServerHealthCheck(): Observable<InfoResponse> {
+    return this.httpClient.get<InfoResponse>(environment.WEBSERVICE_URL + '/healthcheck', { headers: this.constantService.addHttptHeader(true) });
   }
 }

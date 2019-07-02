@@ -1,7 +1,8 @@
-import { NotificationService } from './../common/notification/notification.service';
+import { AlertService } from './../common/alert/alert.service';
 
 import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
+import { InfoResponse } from '../common/inforresponse.model';
 import { HealthCheckService } from './health-check.service';
 
 @Component({
@@ -10,23 +11,19 @@ import { HealthCheckService } from './health-check.service';
 })
 export class HealthCheckComponent implements OnInit {
   result: string;
-  constructor(private logger: NGXLogger, private healthCheckService: HealthCheckService, public notificationService: NotificationService) {}
+  constructor(private logger: NGXLogger, private healthCheckService: HealthCheckService, public alertService: AlertService) {}
 
   ngOnInit() {
-    this.notificationService.clearAllNotifications();
-    this.getHealthCheckResponse();
+    this.alertService.clearAllAlerts();
+    this.getServerHealthCheck();
   }
 
-  getHealthCheckResponse() {
-    this.healthCheckService.getServerResponse().subscribe(
-      response => {
-        this.logger.debug('Received respnse from server [' + response.message + ']');
+  getServerHealthCheck() {
+    this.healthCheckService.getServerHealthCheck().subscribe(
+      (response: InfoResponse) => {
+        this.logger.debug('Received response from server [' + response.message + ']');
         this.result = response.message;
-        this.notificationService.showNotificationToast(
-          this.notificationService.SEVERITY_SUCCESS,
-          this.notificationService.SUMMERY_SUCCESS,
-          this.result
-        );
+        this.alertService.success(this.result);
       },
       () => {}
     );

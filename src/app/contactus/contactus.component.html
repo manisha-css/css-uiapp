@@ -1,0 +1,46 @@
+<div class="container " style="margin-top: 20px;">
+  <div class="col-md-push-3 col-sm-push-3 col-md-6 col-sm-6 col-xs-12 center-block border" style="background-color: #f8faea;">
+    <div class="col-md-12 col-sm-12 col-xs-12 center-block ">
+      <div align="center" style=" margin-top: 20px;">
+        <p style="font-size:larger">
+          <strong style="color: #666;"> Contact Us</strong>
+        </p>
+      </div>
+      <form (ngSubmit)="onSubmit()" #contactusForm="ngForm" novalidate autocomplete="off">
+        <div>
+          <p-messages key="msg"></p-messages>
+        </div>
+        <div class="form-group">
+          <label for="givenName">* Name</label>
+          <input type="text" class="form-control" id="givenName" name="givenName" required maxlength="{{constantService.INPUTTEXT_MAXLENGTH_REGULAR}}"
+            pattern={{constantService.ALPHA_PATTERN_WITHSPACE}} [(ngModel)]="contactus.givenName" #givenName="ngModel" />
+          <div [hidden]="givenName.valid || givenName.pristine" class="alert alert-danger">
+            Name {{constantService.MESSAGE_REQUIRED}} and
+            {{constantService.MESSAGE_ALPHA_PATTERN_WITHSPACE}}.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">* Email</label>
+          <input type="text" class="form-control" id="email" name="email" required maxlength="{{constantService.INPUTTEXT_MAXLENGTH_EMAIL}}"
+            pattern={{constantService.EMAIL_PATTERN}} [(ngModel)]="contactus.email" #email="ngModel" />
+          <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+            Email {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_EMAIL_PATTERN}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="feedback">* Remark/Feedback</label>
+          <textarea class="form-control" id="feedback" name="feedback" rows="{{constantService.TEXTAREA_ROWS}}"
+            cols="{{constantService.TEXTAREA_COLUMNS}}" required maxlength="{{constantService.TEXTAREA_MAXLENGTH_REGULAR}}"
+            pattern={{constantService.ALPHANUMERIC_SOMESPECIALCHARS_PATTERN}} [(ngModel)]="contactus.feedback" #feedback="ngModel"></textarea>
+          <div [hidden]="feedback.valid || feedback.pristine" class="alert alert-danger">
+            Feedback {{constantService.MESSAGE_REQUIRED}} and
+            {{constantService.MESSAGE_ALPHANUMERIC_SOMESPECIALCHARS_PATTERN}}
+          </div>
+        </div>
+        <div class="form-group" align="center">
+          <button class="form-control btn btn-success" [disabled]="!contactusForm.valid || isLoading">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

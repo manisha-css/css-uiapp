@@ -4,16 +4,11 @@ import { Router } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { AlertService } from '../alert/alert.service';
 import { ConstantService } from '../constant.service';
-import { NotificationService } from '../notification/notification.service';
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor(
-    public router: Router,
-    private notificationService: NotificationService,
-    private logger: NGXLogger,
-    private constantService: ConstantService
-  ) {}
+  constructor(public router: Router, private alertService: AlertService, private logger: NGXLogger, private constantService: ConstantService) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -25,26 +20,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           if (error.status === 0) {
             // status returned will be 0 if backend server is not running
             this.logger.error(this.constantService.BACKEND_SERVER_DOWN);
-            this.notificationService.showNotificationMessages(
-              this.notificationService.SEVERITY_ERROR,
-              this.notificationService.SUMMERY_ERROR,
-              this.constantService.BACKEND_SERVER_DOWN
-            );
+            this.alertService.error(this.constantService.BACKEND_SERVER_DOWN);
             return throwError(error);
           }
           if (error.error === undefined || error.error === null) {
-            this.notificationService.showNotificationMessages(
-              this.notificationService.SEVERITY_ERROR,
-              this.notificationService.SUMMERY_ERROR,
-              error.message
-            );
+            this.alertService.error(error.message);
             this.logger.error('Error Status[: ' + error.status + '], Message: [' + error.message + '], Timestamp: [' + error.error.timestamp + ']');
           } else {
-            this.notificationService.showNotificationMessages(
-              this.notificationService.SEVERITY_ERROR,
-              this.notificationService.SUMMERY_ERROR,
-              error.error.message
-            );
+            this.alertService.error(error.error.message);
             this.logger.error(
               'Error Status[: ' + error.status + '], Message: [' + error.error.message + '], Timestamp: [' + error.error.timestamp + ']'
             );

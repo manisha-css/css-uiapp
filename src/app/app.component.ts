@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'css-uiapp';
+  languageList = [
+    // <--- add this
+    { code: 'en', label: 'English' },
+    { code: 'fr', label: 'French' }
+  ];
 }
