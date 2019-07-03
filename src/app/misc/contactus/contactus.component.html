@@ -8,7 +8,7 @@
       </div>
       <form (ngSubmit)="onSubmit()" #contactusForm="ngForm" novalidate autocomplete="off">
         <div>
-          <p-messages key="msg"></p-messages>
+          <app-alert></app-alert>
         </div>
         <div class="form-group">
           <label for="givenName">* Name</label>

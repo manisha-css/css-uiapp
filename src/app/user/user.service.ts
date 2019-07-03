@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ConstantService } from './../common/constant.service';
+import { ConstantService } from '../shared/constant.service';
 import { BasicUser } from './basicuser.model';
 import { User } from './user.model';
 
@@ -7,7 +7,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 import { Observable } from 'rxjs/internal/Observable';
-import { InfoResponse } from '../common/inforresponse.model';
+import { InfoResponse } from '../shared/inforresponse.model';
 
 @Injectable()
 export class UserService {

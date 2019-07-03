@@ -14,7 +14,7 @@ export class LogoutComponent implements OnInit {
   }
 
   logout() {
-    this.basicUserService.clearStoredCache();
+    this.basicUserService.clearLocalCache();
     this.router.navigate(['/user/login']);
   }
 }

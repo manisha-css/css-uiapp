@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ConstantService } from './../constant.service';
+import { ConstantService } from '../constant.service';
 
 @Injectable()
 export class AuthService {

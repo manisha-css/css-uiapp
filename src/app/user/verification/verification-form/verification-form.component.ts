@@ -4,11 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 import { finalize } from 'rxjs/internal/operators/finalize';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { ConstantService } from 'src/app/common/constant.service';
+import { ConstantService } from 'src/app/shared/constant.service';
+import { AlertService } from '../../../shared/alert/alert.service';
+import { InfoResponse } from '../../../shared/inforresponse.model';
 import { User } from '../../user.model';
 import { UserService } from '../../user.service';
-import { AlertService } from './../../../common/alert/alert.service';
-import { InfoResponse } from './../../../common/inforresponse.model';
 
 @Component({
   selector: 'app-verification-form',

@@ -3,9 +3,9 @@
  */
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { BasicUserService } from './../../user/basicuser.service';
-import { AlertService } from './../alert/alert.service';
-import { ConstantService } from './../constant.service';
+import { BasicUserService } from '../../user/basicuser.service';
+import { AlertService } from '../alert/alert.service';
+import { ConstantService } from '../constant.service';
 
 @Injectable()
 export class CanActivateUserAuthGuard implements CanActivate {

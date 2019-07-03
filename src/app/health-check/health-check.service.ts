@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ConstantService } from 'src/app/common/constant.service';
+import { ConstantService } from 'src/app/shared/constant.service';
 import { environment } from '../../environments/environment';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { InfoResponse } from '../common/inforresponse.model';
+import { InfoResponse } from '../shared/inforresponse.model';
 
 @Injectable({
   providedIn: 'root'

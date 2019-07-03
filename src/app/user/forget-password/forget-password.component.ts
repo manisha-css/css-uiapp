@@ -3,11 +3,11 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/internal/operators/finalize';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { AlertService } from 'src/app/common/alert/alert.service';
-import { ConstantService } from '../../common/constant.service';
+import { AlertService } from 'src/app/shared/alert/alert.service';
+import { ConstantService } from '../../shared/constant.service';
+import { InfoResponse } from '../../shared/inforresponse.model';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
-import { InfoResponse } from './../../common/inforresponse.model';
 
 @Component({
   selector: 'app-forget-password',

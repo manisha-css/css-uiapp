@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { finalize } from 'rxjs/internal/operators/finalize';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { AlertService } from 'src/app/common/alert/alert.service';
-import { ConstantService } from 'src/app/common/constant.service';
+import { AlertService } from 'src/app/shared/alert/alert.service';
+import { ConstantService } from 'src/app/shared/constant.service';
 import { BasicUserService } from '../basicuser.service';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
     // clear all cache
-    this.basicUserService.clearStoredCache();
+    this.basicUserService.clearLocalCache();
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
     // clear notifications
@@ -52,13 +52,10 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
       )
       .subscribe(
         response => {
-          this.basicUserService.basicuser = response.body;
           // save to local storage
           const headers = response.headers;
           const jwtToken = headers.get(this.constantService.AUTHORIZATION_HEADER_STRING);
-          localStorage.setItem(this.constantService.LOCAL_STORAGE_JWTTOKEN, jwtToken);
-          // logged in user id is stored to localstorage which is used during reload to retrieve basic user info from server
-          localStorage.setItem(this.constantService.LOCAL_STORAGE_LOGGEDINUSER_ID, this.basicUserService.basicuser.id);
+          this.basicUserService.setLocalCache(jwtToken, response.body);
           this.router.navigateByUrl(this.returnUrl);
         },
         () => {}

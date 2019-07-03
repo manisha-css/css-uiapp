@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { CanActivateUserAuthGuard } from '../common/guards/canactivate-userauthguard';
+import { CanActivateUserAuthGuard } from '../shared/guards/canactivate-userauthguard';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { LoginComponent } from './login/login.component';

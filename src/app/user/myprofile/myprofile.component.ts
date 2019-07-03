@@ -4,12 +4,12 @@ import { Router } from '@angular/router';
 import { NGXLogger } from 'ngx-logger';
 import { finalize } from 'rxjs/internal/operators/finalize';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { AlertService } from '../../common/alert/alert.service';
-import { ConstantService } from '../../common/constant.service';
+import { AlertService } from '../../shared/alert/alert.service';
+import { ConstantService } from '../../shared/constant.service';
+import { InfoResponse } from '../../shared/inforresponse.model';
 import { BasicUserService } from '../basicuser.service';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
-import { InfoResponse } from './../../common/inforresponse.model';
 @Component({
   selector: 'app-myprofile',
   templateUrl: './myprofile.component.html'

@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ConstantService } from './../common/constant.service';
+import { ConstantService } from '../../shared/constant.service';
 
 import { Contactus } from './contactus.model';
 
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from '../../environments/environment';
-import { InfoResponse } from '../common/inforresponse.model';
+import { environment } from '../../../environments/environment';
+import { InfoResponse } from '../../shared/inforresponse.model';
 
 @Injectable()
 export class ContactusService {

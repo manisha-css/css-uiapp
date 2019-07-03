@@ -1,12 +1,12 @@
-import { AlertService } from '../../common/alert/alert.service';
-import { InfoResponse } from './../../common/inforresponse.model';
+import { AlertService } from '../../shared/alert/alert.service';
+import { InfoResponse } from '../../shared/inforresponse.model';
 
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/internal/operators/finalize';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { ConstantService } from '../../common/constant.service';
+import { ConstantService } from '../../shared/constant.service';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
 import { BasicUserService } from './../basicuser.service';
@@ -46,7 +46,7 @@ export class ChangePasswordComponent implements OnInit, OnDestroy, AfterViewInit
       .subscribe(
         (response: InfoResponse) => {
           this.infoResponse = response;
-          this.basicUserService.clearStoredCache();
+          this.basicUserService.clearLocalCache();
           this.showSuccessMsg = true;
         },
 

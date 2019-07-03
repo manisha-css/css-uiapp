@@ -3,11 +3,11 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/internal/operators/finalize';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { AlertService } from 'src/app/common/alert/alert.service';
-import { InfoResponse } from 'src/app/common/inforresponse.model';
+import { AlertService } from 'src/app/shared/alert/alert.service';
+import { InfoResponse } from 'src/app/shared/inforresponse.model';
+import { ConstantService } from '../../shared/constant.service';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
-import { ConstantService } from './../../common/constant.service';
 
 @Component({
   selector: 'app-register',

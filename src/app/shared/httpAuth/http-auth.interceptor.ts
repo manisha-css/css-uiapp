@@ -1,6 +1,6 @@
 import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ConstantService } from 'src/app/common/constant.service';
+import { ConstantService } from 'src/app/shared/constant.service';
 import { AuthService } from './auth.service';
 
 @Injectable()

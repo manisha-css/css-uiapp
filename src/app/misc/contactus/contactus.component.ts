@@ -2,9 +2,9 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/internal/operators/finalize';
-import { AlertService } from 'src/app/common/alert/alert.service';
-import { ConstantService } from '../common/constant.service';
-import { InfoResponse } from '../common/inforresponse.model';
+import { AlertService } from 'src/app/shared/alert/alert.service';
+import { ConstantService } from '../../shared/constant.service';
+import { InfoResponse } from '../../shared/inforresponse.model';
 import { Contactus } from './contactus.model';
 import { ContactusService } from './contactus.service';
 
