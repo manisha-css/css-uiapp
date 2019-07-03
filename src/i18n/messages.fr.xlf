@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="fr">
+    <body>
+      <trans-unit id="healthcheckResult" datatype="html">
+        <source>Healthcheck Server Result:</source><target state="final">French Healthcheck Server Result:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/health-check/health-check.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Health Check Result</note>
+        <note priority="1" from="meaning">healthcheckResult</note>
+      </trans-unit><trans-unit id="aboutUsDesc" datatype="html">
+        <source>
+  Place holder for - About Us
+</source><target state="final">
+  French Place holder for - About Us
+</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/aboutus/aboutus.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">About Us Desc</note>
+        <note priority="1" from="meaning">aboutUsDesc</note>
+      </trans-unit><trans-unit id="homepageDesc" datatype="html">
+        <source>
+  Place holder for - Home Page
+</source><target state="final">
+  French Place holder for - Home Page
+</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/home/home.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Home Page Desc</note>
+        <note priority="1" from="meaning">homepageDesc</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

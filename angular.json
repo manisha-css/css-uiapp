@@ -43,7 +43,7 @@
               "namedChunks": false,
               "aot": true,
               "outputPath": "dist/prod-en/",
-              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nFile": "src/i18n/messages.en.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "en",
               "i18nMissingTranslation": "error",
@@ -73,7 +73,7 @@
               "namedChunks": false,
               "aot": true,
               "outputPath": "dist/prod-fr/",
-              "i18nFile": "src/locale/messages.fr.xlf",
+              "i18nFile": "src/i18n/messages.fr.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "fr",
               "i18nMissingTranslation": "error",
@@ -103,7 +103,7 @@
               "namedChunks": false,
               "aot": true,
               "outputPath": "dist/qa-en/",
-              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nFile": "src/i18n/messages.en.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "en",
               "i18nMissingTranslation": "error",
@@ -133,7 +133,7 @@
               "namedChunks": false,
               "aot": true,
               "outputPath": "dist/qa-fr/",
-              "i18nFile": "src/locale/messages.fr.xlf",
+              "i18nFile": "src/i18n/messages.fr.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "fr",
               "i18nMissingTranslation": "error",
@@ -157,7 +157,7 @@
               "namedChunks": false,
               "aot": true,
               "outputPath": "dist/dev-en/",
-              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nFile": "src/i18n/messages.en.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "en",
               "i18nMissingTranslation": "error",
@@ -181,7 +181,7 @@
               "namedChunks": false,
               "aot": true,
               "outputPath": "dist/dev-fr/",
-              "i18nFile": "src/locale/messages.fr.xlf",
+              "i18nFile": "src/i18n/messages.fr.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "fr",
               "i18nMissingTranslation": "error",
@@ -205,9 +205,6 @@
             "browserTarget": "css-uiapp:build"
           },
           "configurations": {
-            "production-en": {
-              "browserTarget": "css-uiapp:build:production-en"
-            },
             "production-fr": {
               "browserTarget": "css-uiapp:build:production-fr"
             },
@@ -222,6 +219,9 @@
             },
             "dev-en": {
               "browserTarget": "css-uiapp:build:dev-en"
+            },
+            "fr": {
+              "browserTarget": "css-uiapp:build:fr"
             }
           }
         },
@@ -248,6 +248,18 @@
           "options": {
             "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**"]
+          }
+        },
+        "xliffmerge": {
+          "builder": "@ngx-i18nsupport/tooling:xliffmerge",
+          "options": {
+            "xliffmergeOptions": {
+              "i18nFormat": "xlf",
+              "srcDir": "src/i18n",
+              "genDir": "src/i18n",
+              "defaultLanguage": "en",
+              "languages": ["en", "fr"]
+            }
           }
         }
       }

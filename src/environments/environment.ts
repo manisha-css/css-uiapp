@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  WEBSERVICE_URL: 'http://localhost:8080/css'
+  WEBSERVICE_URL: 'http://localhost:8080/css',
+  LANG_EN_URL: 'http://localhost:4200/en',
+  LANG_FR_URL: 'http://localhost:4300/fr'
 };
 
 /*

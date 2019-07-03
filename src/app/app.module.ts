@@ -11,6 +11,7 @@ import { MessagesModule } from 'primeng/messages';
 import { ToastModule } from 'primeng/toast';
 import { environment } from 'src/environments/environment';
 import { AlertComponent } from './common/alert/alert.component';
+import { RedirectGuard } from './common/guards/redirect-guard';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -110,6 +111,7 @@ import { VerificationResendComponent } from './user/verification/verification-re
     },
     ConstantService,
     CanActivateUserAuthGuard,
+    RedirectGuard,
     AuthService,
     UserService,
     ConstantService,

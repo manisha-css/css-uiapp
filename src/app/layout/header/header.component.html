@@ -14,9 +14,11 @@
         {{language.label}}
         </a>
       </li> -->
-      <select class="form-control" id="langselect" [ngModel]="selectedLang" (ngModelChange)="onChangeLang($event)">
-        <option *ngFor="let language of languageList" [ngValue]="language.code"> {{language.label}}</option>
+      <select (change)="onChangeLang($event.target.value)" [(ngModel)]="selectedLang">
+        <option *ngFor="let language of languageList" value={{language.code}}>
+          {{language.label}}</option>
       </select>
+      <br />
 
       <li *ngIf="!basicUserService.isLoggedIn()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/user/register']">Register</a>

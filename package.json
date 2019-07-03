@@ -15,7 +15,13 @@
     "format:check": "npm run format:prettier:check && npm run format:html:check",
     "format:fix": "npm run format:prettier:fix && npm run format:html:fix",
     "lint:fix": "ng lint --fix",
-    "format:lint:fix": "npm run format:fix && npm run lint:fix"
+    "format:lint:fix": "npm run format:fix && npm run lint:fix",
+    "build:alllang:prod": "ng build --prod && ng build --configuration=production-fr",
+    "build:alllang:qa": "ng build --configuration=qa-en && ng build --configuration=qa-fr",
+    "build:alllang:dev": "ng build --configuration=dev-en && ng build --configuration=dev-fr",
+    "extract-i18n": "ng xi18n css-uiapp --i18n-format xlf --output-path i18n --i18n-locale en && ng run css-uiapp:xliffmerge",
+    "start-dev-en": "ng serve --configuration=dev-en",
+    "start-dev-fr": "ng serve --configuration=dev-fr --port 4300"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +33,7 @@
     "@angular/platform-browser": "~8.0.2",
     "@angular/platform-browser-dynamic": "~8.0.2",
     "@angular/router": "~8.0.2",
+    "@ngx-i18nsupport/tooling": "^8.0.3",
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.9",
     "jquery": "^3.3.1",
@@ -44,6 +51,7 @@
     "@angular/cli": "~8.0.4",
     "@angular/compiler-cli": "~8.0.2",
     "@angular/language-service": "~8.0.2",
+    "@ngx-i18nsupport/ngx-i18nsupport": "^1.1.6",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
