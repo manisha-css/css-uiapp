@@ -11,20 +11,13 @@ export class HeaderComponent implements OnInit {
   selectedLang: any;
   languageList = [{ code: 'en', label: 'English' }, { code: 'fr', label: 'French' }];
 
-  constructor(private router: Router, public basicUserService: BasicUserService, platformLocation: PlatformLocation) {
-    console.log((platformLocation as any).location);
-    console.log((platformLocation as any).location.href);
-    console.log((platformLocation as any).location.pathname);
-    // get first part which is locale
-    const pathArr = (platformLocation as any).location.pathname.split('/');
-    if (pathArr.length > 0) {
-      this.selectedLang = pathArr[0];
-    } else {
-      this.selectedLang = 'en';
-    }
-  }
+  constructor(private router: Router, public basicUserService: BasicUserService, private platformLocation: PlatformLocation) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // get first 2 characters afetr / which is locale
+    this.selectedLang = (this.platformLocation as any).location.pathname.substring(1, 3);
+    alert('init header with selected lang' + this.selectedLang);
+  }
 
   onChangeLang(lang: any) {
     console.log('lang code ' + lang + JSON.stringify(this.selectedLang));
