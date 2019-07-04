@@ -4,14 +4,20 @@ import { environment } from 'src/environments/environment';
 import { HomeComponent } from '../home/home.component';
 import { RedirectGuard } from '../shared/guards/redirect-guard';
 
+// need to define below constant for compodoc as 1.1.9 version otherwise fails
+const enUrl = {
+  data: environment.LANG_EN_URL
+};
+const frUrl = {
+  data: environment.LANG_EN_URL
+};
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'en',
     canActivate: [RedirectGuard],
-    component: HomeComponent,
+    component: HomeComponent, // use as dummy placeholder component
     data: {
-      externalUrl: environment.LANG_EN_URL
+      externalUrl: enUrl.data
     }
   },
   {
@@ -19,7 +25,7 @@ const routes: Routes = [
     canActivate: [RedirectGuard],
     component: HomeComponent, // use as dummy placeholder component
     data: {
-      externalUrl: environment.LANG_FR_URL
+      externalUrl: frUrl.data
     }
   }
 ];
