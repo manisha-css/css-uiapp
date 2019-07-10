@@ -9,7 +9,7 @@ const enUrl = {
   data: environment.LANG_EN_URL
 };
 const frUrl = {
-  data: environment.LANG_EN_URL
+  data: environment.LANG_FR_URL
 };
 const routes: Routes = [
   {

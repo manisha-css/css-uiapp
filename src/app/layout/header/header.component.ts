@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, public basicUserService: BasicUserService, private platformLocation: PlatformLocation) {}
 
   ngOnInit() {
-    // get first 2 characters afetr / which is locale
+    // get first 2 characters after '/' which is locale
     this.selectedLang = (this.platformLocation as any).location.pathname.substring(1, 3);
   }
 
