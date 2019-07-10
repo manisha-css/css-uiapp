@@ -16,7 +16,6 @@ import { UserService } from '../../user.service';
 })
 export class VerificationFormComponent implements OnInit, OnDestroy, AfterViewInit {
   user: User = new User();
-  @Input() userName: string;
   displayPrivacyDialog: boolean;
   displayTermsDialog: boolean;
   isLoading: boolean;
@@ -35,7 +34,7 @@ export class VerificationFormComponent implements OnInit, OnDestroy, AfterViewIn
     public constantService: ConstantService
   ) {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.userName = params['userName'];
+      this.user.userName = params.username;
     });
   }
 
@@ -61,7 +60,6 @@ export class VerificationFormComponent implements OnInit, OnDestroy, AfterViewIn
   }
 
   ngOnInit() {
-    this.user.userName = this.userName;
     this.alertService.clearAllAlerts();
   }
   onContinue() {

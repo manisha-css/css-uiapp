@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
     this.displayPrivacyDialog = false;
   }
   onContinue() {
-    this.router.navigate(['/user/verification/form']);
+    this.router.navigate(['/user/verification/form'], { queryParams: { username: this.user.userName } });
   }
 
   ngAfterViewInit() {

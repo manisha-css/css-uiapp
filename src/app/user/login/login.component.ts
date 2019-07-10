@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     // clear all cache
     this.basicUserService.clearLocalCache();
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/home';
     // clear notifications
     this.alertService.clearAllAlerts();
   }
