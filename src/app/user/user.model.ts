@@ -9,10 +9,6 @@ export class User extends BasicUser {
   // required for change password
   oldPassword: string;
   newPassword: string;
-  subscribeCssUpdates: boolean;
-
-  accountDisabled: boolean;
-  deleteStatus: boolean;
 
   constructor() {
     super();

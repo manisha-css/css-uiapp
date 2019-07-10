@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
       .register(this.user)
       .pipe(
         finalize(() => {
+          this.isFormSubmit = true;
           this.isLoading = false;
         })
       )
@@ -50,7 +51,7 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
     this.displayTermsDialog = true;
   }
 
-  onPrivacyPolicyDialog() {
+  public onPrivacyPolicyDialog() {
     this.displayPrivacyDialog = true;
   }
 
@@ -62,7 +63,7 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
     this.displayPrivacyDialog = false;
   }
   onContinue() {
-    this.router.navigate(['/user/login']);
+    this.router.navigate(['/user/verification/form']);
   }
 
   ngAfterViewInit() {

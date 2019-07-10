@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { AlertService } from '../../shared/alert/alert.service';
 import { ConstantService } from '../../shared/constant.service';
 import { InfoResponse } from '../../shared/inforresponse.model';
-import { BasicUserService } from '../basicuser.service';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
 @Component({
@@ -26,7 +25,6 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private router: Router,
     private userService: UserService,
-    private basicUserService: BasicUserService,
     public alertService: AlertService,
     private logger: NGXLogger,
     public constantService: ConstantService
@@ -55,7 +53,8 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     // clear notifications
     this.alertService.clearAllAlerts();
-    this.userService.getUserById(this.basicUserService.basicuser.id).subscribe(
+    const loggedInUserId = localStorage.getItem(this.constantService.LOCAL_STORAGE_LOGGEDINUSER_ID);
+    this.userService.getUserById(loggedInUserId).subscribe(
       (response: User) => {
         this.user = response;
         this.logger.debug('User info retrieved successfully');
@@ -64,7 +63,7 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
   onContinue() {
-    this.router.navigate(['/user/login']);
+    this.router.navigate(['/home']);
   }
 
   ngAfterViewInit() {

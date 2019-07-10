@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ConstantService } from '../shared/constant.service';
-import { BasicUser } from './basicuser.model';
 import { User } from './user.model';
 
 import { HttpClient, HttpResponse } from '@angular/common/http';
@@ -11,12 +10,12 @@ import { InfoResponse } from '../shared/inforresponse.model';
 
 @Injectable()
 export class UserService {
-  currentLang: string;
+  public currentLang: string;
   displayDialog: boolean;
   private USER_URL = environment.WEBSERVICE_URL + '/user';
   private REGISTER_URL = this.USER_URL + '/register';
   private LOGIN_URL = this.USER_URL + '/login';
-  private VERIFICATIONCODE_URL = this.USER_URL + '/verificationcode';
+  private VERIFICATIONCODE_URL = this.USER_URL + '/verification';
 
   private FORGETPASSWORD_URL = this.USER_URL + '/forgetPassword';
   private CHANGEPASSWORD_URL = this.USER_URL + '/changePassword';
@@ -30,9 +29,9 @@ export class UserService {
     return this.httpClient.post<InfoResponse>(this.REGISTER_URL, body, { headers: this.constantService.addHttptHeader(true) });
   }
 
-  login(user: User): Observable<HttpResponse<BasicUser>> {
+  login(user: User): Observable<HttpResponse<InfoResponse>> {
     // here we require complete response
-    return this.httpClient.post<BasicUser>(
+    return this.httpClient.post<InfoResponse>(
       this.LOGIN_URL,
       {
         userName: user.userName,

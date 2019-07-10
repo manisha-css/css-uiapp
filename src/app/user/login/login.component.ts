@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
           // save to local storage
           const headers = response.headers;
           const jwtToken = headers.get(this.constantService.AUTHORIZATION_HEADER_STRING);
-          this.basicUserService.setLocalCache(jwtToken, response.body);
+          this.basicUserService.setLocalCache(jwtToken, response.body.result);
           this.router.navigateByUrl(this.returnUrl);
         },
         () => {}

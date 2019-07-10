@@ -53,10 +53,11 @@ export class VerificationResendComponent implements OnInit, OnDestroy, AfterView
   }
 
   ngOnInit() {
+    this.showSuccessMsg = false;
     this.alertService.clearAllAlerts();
   }
   onContinue() {
-    this.router.navigate(['/user/login']);
+    this.router.navigate(['/user/verification/form']);
   }
 
   ngAfterViewInit() {

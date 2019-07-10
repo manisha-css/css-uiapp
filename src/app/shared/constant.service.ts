@@ -7,6 +7,8 @@ export class ConstantService {
 
   // error messages
   public BACKEND_SERVER_DOWN = 'Backend server seems to be down, please try again later';
+  public BACKEND_NOT_FOUND = 'Backend server api not found';
+
   public AUTHGUARD_LOGIN = 'This Menu option requires you to login. Please login.';
 
   public AUTHORIZATION_HEADER_STRING = 'Authorization';

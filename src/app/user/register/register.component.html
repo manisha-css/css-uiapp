@@ -1,74 +1,89 @@
-<div class="container " style="margin-top: 20px;">
-  <div class="col-md-push-3 col-sm-push-3 col-md-6 col-sm-6 col-xs-12 center-block border" style="background-color: #f8faea;">
-    <div class="col-md-12 col-sm-12 col-xs-12 center-block ">
-      <div align="center" style=" margin-top: 20px;">
-        <p style="font-size:larger">
-          <strong style="color: #666;"> Register</strong>
-        </p>
-      </div>
+<div [hidden]="showSuccessMsg">
+  <div class="container " style="margin-top: 20px; margin-bottom: 20px">
+    <div class="col-md-push-3 col-sm-push-3 col-md-6 col-sm-6 col-xs-12 center-block border" style="background-color: #f8faea;">
+      <div class="col-md-12 col-sm-12 col-xs-12 center-block ">
+        <div align="center" style=" margin-top: 20px;">
+          <p style="font-size:larger">
+            <strong style="color: #666;"> Register</strong>
+          </p>
+        </div>
 
-      <form (ngSubmit)="onSubmit()" #registerForm="ngForm" novalidate autocomplete="off">
-        <div>
-          <app-alert></app-alert>
-        </div>
-        <div class="form-group form-row">
-          <label for="givenName">* Name</label>
-          <input type="text" class="form-control" id="givenName" name="givenName" required maxlength="{{constantService.INPUTTEXT_MAXLENGTH_REGULAR}}"
-            pattern={{constantService.ALPHA_PATTERN_WITHSPACE}} [(ngModel)]="user.givenName" #givenName="ngModel" />
-          <div [hidden]="givenName.valid || givenName.pristine" class="alert alert-danger">
-            Name {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_ALPHA_PATTERN_WITHSPACE}}.
+        <form (ngSubmit)="onSubmit()" #registerForm="ngForm" novalidate autocomplete="off">
+          <div>
+            <app-alert></app-alert>
           </div>
-        </div>
-        <div class="form-group form-row">
-          <label for="email">* User name (Your email):</label>
-          <input type="text" class="form-control" id="email" name="email" required maxlength="{{constantService.INPUTTEXT_MAXLENGTH_EMAIL}}"
-            pattern={{constantService.EMAIL_PATTERN}} [(ngModel)]="user.userName" #email="ngModel" />
-          <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-            User name {{constantService.MESSAGE_EMAIL_PATTERN}}.
+          <div class="form-group form-row">
+            <label for="givenName">* Name</label>
+            <input type="text" class="form-control" id="givenName" name="givenName" required
+              maxlength="{{constantService.INPUTTEXT_MAXLENGTH_REGULAR}}" pattern={{constantService.ALPHA_PATTERN_WITHSPACE}}
+              [(ngModel)]="user.givenName" #givenName="ngModel" />
+            <div [hidden]="givenName.valid || givenName.pristine" class="alert alert-danger">
+              Name {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_ALPHA_PATTERN_WITHSPACE}}.
+            </div>
           </div>
-        </div>
-        <div class="form-group form-row">
-          <label for="userPassword">* Password:</label>
-          <input type="password" class="form-control" id="userPassword" name="userPassword" required
-            maxlength="{{constantService.PASSWORD_MAXLENGTH}}" pattern={{constantService.SECRETKEY_PATTERN}} [(ngModel)]="user.userPassword"
-            #userPassword="ngModel" />
-          <div [hidden]="userPassword.valid || userPassword.pristine" class="alert alert-danger">
-            Password {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_SECRETKEY_PATTERN}}
+          <div class="form-group form-row">
+            <label for="email">* User name (Your email):</label>
+            <input type="text" class="form-control" id="email" name="email" required maxlength="{{constantService.INPUTTEXT_MAXLENGTH_EMAIL}}"
+              pattern={{constantService.EMAIL_PATTERN}} [(ngModel)]="user.userName" #email="ngModel" />
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+              User name {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_EMAIL_PATTERN}}.
+            </div>
           </div>
-        </div>
-        <div class="form-group form-row">
-          <label for="cnfPassword">* Confirm Password:</label>
-          <input type="password" class="form-control" id="cnfPassword" name="cnfPassword" required [(ngModel)]="user.confirmPassword"
-            #cnfPassword="ngModel" [equal]="user.userPassword" />
-          <div [hidden]="cnfPassword.valid || cnfPassword.pristine" class="alert alert-danger">
-            Confirm password need to match with new password.
+          <div class="form-group form-row">
+            <label for="userPassword">* Password:</label>
+            <input type="password" class="form-control" id="userPassword" name="userPassword" required
+              maxlength="{{constantService.PASSWORD_MAXLENGTH}}" pattern={{constantService.SECRETKEY_PATTERN}} [(ngModel)]="user.userPassword"
+              #userPassword="ngModel" />
+            <div [hidden]="userPassword.valid || userPassword.pristine" class="alert alert-danger">
+              Password {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_SECRETKEY_PATTERN}}
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="acceptTC"></label>
-          <input type="checkbox" id="acceptTC" name="acceptTC" [(ngModel)]="user.acceptTC" #acceptTC="ngModel" required pattern="true">
-          Accept By accepting, you agree to the
-          <a href data-toggle="modal" data-target="#privacyModal"> Privacy Policy</a> & <a href data-toggle="modal"
+          <div class="form-group form-row">
+            <label for="cnfPassword">* Confirm Password:</label>
+            <input type="password" class="form-control" id="cnfPassword" name="cnfPassword" required [(ngModel)]="user.confirmPassword"
+              #cnfPassword="ngModel" [equal]="user.userPassword" />
+            <div [hidden]="cnfPassword.valid || cnfPassword.pristine" class="alert alert-danger">
+              Confirm password need to match with new password.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="acceptTC"></label>
+            <input type="checkbox" id="acceptTC" name="acceptTC" [(ngModel)]="user.acceptTC" #acceptTC="ngModel" required pattern="true">
+            Accept By accepting, you agree to the
+            <a href data-toggle="modal" data-target="#privacyModal"> Privacy Policy</a> & <a href data-toggle="modal"
               data-target="#tcModal">Terms and Conditions</a>
-        </div>
-        <div [hidden]="acceptTC.valid || acceptTC.pristine" class="alert alert-danger">
-          Please accept Terms & Conditions.
-        </div>
-        <div class="form-group" align="center">
-          <button class="form-control btn btn-success" [disabled]="!registerForm.valid || isLoading">Register
-          </button>
-        </div>
-        <div class="form-group">
-          Already have signed up?
-          <a [routerLink]="['/user/login']">
+          </div>
+          <div [hidden]="acceptTC.valid || acceptTC.pristine" class="alert alert-danger">
+            Please accept Terms & Conditions.
+          </div>
+          <div class="form-group" align="center">
+            <button class="form-control btn btn-success" [disabled]="!registerForm.valid || isLoading">Register
+            </button>
+          </div>
+          <div class="form-group">
+            Already have signed up?
+            <a [routerLink]="['/user/login']">
               Login
             </a>
-        </div>
-      </form>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
-
+<div *ngIf="showSuccessMsg">
+  <div class="container " style="margin-top: 20px; margin-bottom: 20px">
+    <div class="col-md-push-3 col-sm-push-3 col-md-6 col-sm-6 col-xs-12 center-block border" style="background-color: #f8faea;">
+      <div class="col-md-12 col-sm-12 col-xs-12 center-block ">
+        <div align="center" style=" margin-top: 20px;">
+          {{infoResponse.message}}.
+          <button type="button" class="form-control btn btn-success" (click)="onContinue()">Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- The Modal -->
 <div class="modal" id="tcModal">

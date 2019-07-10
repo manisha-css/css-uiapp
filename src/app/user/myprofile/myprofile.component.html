@@ -1,41 +1,56 @@
-<div class="container " style="margin-top: 20px;">
-
-  <div>
-    <form (ngSubmit)="onSubmit()" #myprofileForm="ngForm" novalidate autocomplete="off">
-      <div>
-        <app-alert></app-alert>
-      </div>
-      <div class="form-group form-row">
-        <label>UserName (Email):</label> {{user.userName}}
-      </div>
-      <div class="form-group">
-        <label for="givenName">* Name</label>
-        <input type="text" class="form-control" id="givenName" name="givenName" required maxlength="{{constantService.INPUTTEXT_MAXLENGTH_REGULAR}}"
-          pattern={{constantService.ALPHA_PATTERN_WITHSPACE}} [(ngModel)]="user.givenName" #givenName="ngModel" />
-        <div [hidden]="givenName.valid || givenName.pristine" class="alert alert-danger">
-          Name {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_ALPHA_PATTERN_WITHSPACE}}.
+<div [hidden]="showSuccessMsg">
+  <div class="container " style="margin-top: 20px; margin-bottom: 20px">
+    <div class="col-md-push-3 col-sm-push-3 col-md-6 col-sm-6 col-xs-12 center-block border" style="background-color: #f8faea;">
+      <div class="col-md-12 col-sm-12 col-xs-12 center-block ">
+        <div align="center" style=" margin-top: 20px;">
+          <p style="font-size:larger"><strong style="color: #666;"> My Profile</strong></p>
         </div>
+        <form (ngSubmit)="onSubmit()" #myprofileForm="ngForm" novalidate autocomplete="off">
+          <div>
+            <app-alert></app-alert>
+          </div>
+          <div class="form-group form-row">
+            <label>UserName (Email):</label> {{user.userName}}
+          </div>
+          <div class="form-group">
+            <label for="givenName">* Name</label>
+            <input type="text" class="form-control" id="givenName" name="givenName" required
+              maxlength="{{constantService.INPUTTEXT_MAXLENGTH_REGULAR}}" pattern={{constantService.ALPHA_PATTERN_WITHSPACE}}
+              [(ngModel)]="user.givenName" #givenName="ngModel" />
+            <div [hidden]="givenName.valid || givenName.pristine" class="alert alert-danger">
+              Name {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_ALPHA_PATTERN_WITHSPACE}}.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="publicProfile">Public profile</label>
+            <textarea class="form-control" id="publicProfile" name="publicProfile" rows="{{constantService.TEXTAREA_ROWS}}"
+              cols="{{constantService.TEXTAREA_COLUMNS}}" maxlength="constantService.TEXTAREA_MAXLENGTH_REGULAR"
+              pattern={{constantService.ALPHANUMERIC_SOMESPECIALCHARS_PATTERN}} [(ngModel)]="user.publicProfile" #publicProfile="ngModel"></textarea>
+            <div [hidden]="publicProfile.valid || publicProfile.pristine" class="alert alert-danger">
+              Public Profile {{constantService.MESSAGE_REQUIRED}} and
+              {{constantService.MESSAGE_ALPHANUMERIC_SOMESPECIALCHARS_PATTERN}}
+            </div>
+          </div>
+          <div class="form-group" align="center">
+            <button class="form-control btn btn-success" [disabled]="!myprofileForm.valid || isLoading">
+              <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>Save
+            </button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="publicProfile">Public profile</label>
-        <textarea class="form-control" id="publicProfile" name="publicProfile" rows="{{constantService.TEXTAREA_ROWS}}"
-          cols="{{constantService.TEXTAREA_COLUMNS}}" maxlength="constantService.TEXTAREA_MAXLENGTH_REGULAR"
-          pattern={{constantService.ALPHANUMERIC_SOMESPECIALCHARS_PATTERN}} [(ngModel)]="user.publicProfile" #publicProfile="ngModel"></textarea>
-        <div [hidden]="publicProfile.valid || publicProfile.pristine" class="alert alert-danger">
-          Public Profile {{constantService.MESSAGE_REQUIRED}} and
-          {{constantService.MESSAGE_ALPHANUMERIC_SOMESPECIALCHARS_PATTERN}}
-        </div>
-      </div>
-      <div class="form-group" align="center">
-        <button class="form-control btn btn-success" [disabled]="!myprofileForm.valid || isLoading">
-          <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>Save
-        </button>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 <div *ngIf="showSuccessMsg">
-  {{infoResponse.message}}.
-  <button type="button" class="form-control btn btn-success" (click)="onContinue()">Continue
-  </button>
+  <div class="container " style="margin-top: 20px; margin-bottom: 20px">
+    <div class="col-md-push-3 col-sm-push-3 col-md-6 col-sm-6 col-xs-12 center-block border" style="background-color: #f8faea;">
+      <div class="col-md-12 col-sm-12 col-xs-12 center-block ">
+        <div align="center" style=" margin-top: 20px;">
+          {{infoResponse.message}}.
+          <button type="button" class="form-control btn btn-success" (click)="onContinue()">Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
