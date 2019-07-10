@@ -11,8 +11,8 @@
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "format:prettier:check": "./node_modules/.bin/prettier --config ./.prettierrc --list-different \"src/**/*.{ts,js,json,css}\" -l",
     "format:prettier:fix": "./node_modules/.bin/prettier --config ./.prettierrc --list-different \"src/**/*.{ts,js,json,css}\" --write",
-    "format:html:check": "./node bin/glob-ls.js 'src/**/*.html'  | xargs  ./bin/html-beautify-check.sh",
-    "format:html:fix": "./node bin/glob-ls.js 'src/**/*.html'  | xargs ./node_modules/.bin/html-beautify -r",
+    "format:html:check": "node bin/glob-ls.js 'src/**/*.html'  | xargs  ./bin/html-beautify-check.sh",
+    "format:html:fix": "node bin/glob-ls.js 'src/**/*.html'  | xargs ./node_modules/.bin/html-beautify -r",
     "format:check": "npm run format:prettier:check && npm run format:html:check",
     "format:fix": "npm run format:prettier:fix && npm run format:html:fix",
     "lint:fix": "ng lint --fix",
@@ -29,14 +29,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^8.0.3",
-    "@angular/common": "^8.0.3",
-    "@angular/compiler": "^8.0.3",
-    "@angular/core": "^8.0.3",
-    "@angular/forms": "^8.0.3",
-    "@angular/platform-browser": "^8.0.3",
-    "@angular/platform-browser-dynamic": "^8.0.3",
-    "@angular/router": "^8.0.3",
+    "@angular/animations": "^8.1.0",
+    "@angular/common": "^8.1.0",
+    "@angular/compiler": "^8.1.0",
+    "@angular/core": "^8.1.0",
+    "@angular/forms": "^8.1.0",
+    "@angular/platform-browser": "^8.1.0",
+    "@angular/platform-browser-dynamic": "^8.1.0",
+    "@angular/router": "^8.1.0",
     "@ngx-i18nsupport/tooling": "^8.0.3",
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.9",
@@ -50,10 +50,10 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.800.6",
-    "@angular/cli": "^8.0.6",
-    "@angular/compiler-cli": "^8.0.3",
-    "@angular/language-service": "^8.0.3",
-    "@compodoc/compodoc": "^1.1.9",
+    "@angular/cli": "^8.1.0",
+    "@angular/compiler-cli": "^8.1.0",
+    "@angular/language-service": "^8.1.0",
+    "@compodoc/compodoc": "^1.1.10",
     "@ngx-i18nsupport/ngx-i18nsupport": "^1.1.6",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
@@ -75,5 +75,10 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "~3.4.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format:check && npm run lint"
+    }
   }
 }
