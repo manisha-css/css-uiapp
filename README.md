@@ -2,26 +2,119 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
 
-## Development server
+##IDE:
+Visual Studio Code.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+##Min Extensions required:
+Beautify
+Prettier
+TSLint
 
-## Code scaffolding
+##IDE settings.json
+Either global settings or project specific under /.vscode/settings.json)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+{
+"workbench.colorTheme": "Default Light+",
+"gitlens.advanced.messages": {
+"suppressShowKeyBindingsNotice": true
+},
+"typescript.updateImportsOnFileMove.enabled": "always",
+"window.zoomLevel": 0,
+"editor.hover.enabled": false,
+"[typescript]": {
+"editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"[javascript]": {
+"editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"[json]": {
+"editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"[jsonc]": {
+"editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"[css]": {
+"editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"[html]": {
+"editor.defaultFormatter": "HookyQR.beautify"
+},
+"editor.formatOnSave": true,
+"vsicons.projectDetection.autoReload": true,
+"npm.enableScriptExplorer": true
+}
 
-## Build
+#Angular Bootstrap:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+##git repo:
+https://github.com/manisha-css/css-uiapp
 
-## Running unit tests
+#Features included
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Initialization
+- Layout
+  Body
+  Header
+  Footer
+- Health check
+- Debugging
+- Code Format & Code quality
+- Pre commit hook
+- Logging
+- Exception handling
+- Environment
+- Contextual help
+- Notifications
+- Documentation
+- I18n
+- Convert app into modular
+- Basic place holders for
+  Home
+  About Us
+  Privacy Policy
+  Terms & Conditions
 
-## Running end-to-end tests
+- Auth Guards
+- Http Auth Interceptors
+- JWT Auth Service
+- User Module
+  User Registration
+  Verification vi code
+  Re-Send Verification code
+  Forget password
+  Login
+  Logout
+  My Profile
+  Change password
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- Contact Us module
 
-## Further help
+# Setting up
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Prerequisite:
+
+- node/npm/angular-cli is already installed.
+- I have tested using node v10.16.0 and npm v6.9.0.
+- Project has been created using angular-cli version 8.0.3
+- Visual Studio Code (Mine is Version 1.36.1)
+
+## Steps:
+
+1. clone it to your project directory
+2. Open in IDE
+3. At Project root
+   \$ npm install
+
+4. To run locally for english lang
+   \$ npm run start-dev-en
+
+5. To run locally for French lang
+   \$ npm run start-dev-fr
+
+6. English lang Angular server will be running
+
+http://localhost:4200/en
+
+7. French Lang Angular server will be running on
+
+http://localhost:4300/fr
