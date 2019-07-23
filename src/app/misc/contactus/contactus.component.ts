@@ -15,6 +15,7 @@ import { ContactusService } from './contactus.service';
 export class ContactusComponent implements OnInit, OnDestroy, AfterViewInit {
   contactus: Contactus = new Contactus();
   isLoading: boolean;
+  showSuccessMsg: boolean;
   @ViewChild('contactusForm', { static: false }) public contactusForm: NgForm;
   formChangesSubscription: any;
   isFormSubmit: boolean;
@@ -38,8 +39,9 @@ export class ContactusComponent implements OnInit, OnDestroy, AfterViewInit {
         })
       )
       .subscribe(
-        response => {
-          this.alertService.success(response.message);
+        (response: InfoResponse) => {
+          this.infoResponse = response;
+          this.showSuccessMsg = true;
         },
         () => {}
       );
@@ -50,7 +52,7 @@ export class ContactusComponent implements OnInit, OnDestroy, AfterViewInit {
     this.alertService.clearAllAlerts();
   }
   onContinue() {
-    this.router.navigate(['/user/login']);
+    this.router.navigate(['/home']);
   }
 
   ngAfterViewInit() {
