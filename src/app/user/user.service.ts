@@ -31,13 +31,14 @@ export class UserService {
 
   login(user: User): Observable<HttpResponse<InfoResponse>> {
     // here we require complete response
+
     return this.httpClient.post<InfoResponse>(
       this.LOGIN_URL,
       {
         userName: user.userName,
         userPassword: user.userPassword
       },
-      { headers: this.constantService.addHttptHeader(false), observe: 'response' }
+      { headers: this.constantService.addHttptHeader(true), observe: 'response' }
     );
   }
 

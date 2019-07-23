@@ -1,9 +1,10 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PlatformLocation } from '@angular/common';
 
 @Injectable()
 export class ConstantService {
-  constructor() {}
+  constructor(private platformLocation: PlatformLocation) {}
 
   // error messages
   public BACKEND_SERVER_DOWN = 'Backend server seems to be down, please try again later';
@@ -95,7 +96,8 @@ export class ConstantService {
 
   addHttptHeader(jsonType: boolean): HttpHeaders {
     let headers = new HttpHeaders();
-    headers = headers.append('Accept-Language', 'US');
+    const selectedLang = (this.platformLocation as any).location.pathname.substring(1, 3);
+    headers = headers.append('Accept-Language', selectedLang);
     if (jsonType) {
       headers = headers.append('Content-Type', 'application/json');
     } else {
