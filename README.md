@@ -1,16 +1,20 @@
-# CssUiapp
+# Css Angular App - Bootstrap template
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
 
-##IDE:
+## Preferred IDE:
+
 Visual Studio Code.
 
-##Min Extensions required:
+## Min Extensions required:
+
 Beautify
 Prettier
 TSLint
 
-##IDE settings.json
+## IDE Settings:
+
+Update VS Code settings.json
 Either global settings or project specific under /.vscode/settings.json)
 
 {
@@ -44,12 +48,11 @@ Either global settings or project specific under /.vscode/settings.json)
 "npm.enableScriptExplorer": true
 }
 
-#Angular Bootstrap:
+## Git repo:
 
-##git repo:
 https://github.com/manisha-css/css-uiapp
 
-#Features included
+# Features developed
 
 - Initialization
 - Layout
@@ -73,7 +76,6 @@ https://github.com/manisha-css/css-uiapp
   About Us
   Privacy Policy
   Terms & Conditions
-
 - Auth Guards
 - Http Auth Interceptors
 - JWT Auth Service
@@ -86,10 +88,7 @@ https://github.com/manisha-css/css-uiapp
   Logout
   My Profile
   Change password
-
 - Contact Us module
-
-# Setting up
 
 ## Prerequisite:
 
@@ -98,7 +97,7 @@ https://github.com/manisha-css/css-uiapp
 - Project has been created using angular-cli version 8.0.3
 - Visual Studio Code (Mine is Version 1.36.1)
 
-## Steps:
+## Steps to run:
 
 1. clone it to your project directory
 2. Open in IDE
