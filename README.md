@@ -52,7 +52,7 @@ Either global settings or project specific under /.vscode/settings.json)
 
 https://github.com/manisha-css/css-uiapp
 
-# Features developed
+## Features developed
 
 - Initialization
 - Layout
@@ -66,7 +66,7 @@ https://github.com/manisha-css/css-uiapp
 - Logging
 - Exception handling
 - Environment
-- Contextual help
+- Contextual help - introduction
 - Notifications
 - Documentation
 - I18n
