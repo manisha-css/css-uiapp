@@ -54,9 +54,7 @@ export class ChangePasswordComponent implements OnInit, OnDestroy, AfterViewInit
       );
   }
 
-  ngOnInit() {
-    this.alertService.clearAllAlerts();
-  }
+  ngOnInit() {}
 
   onContinue() {
     this.router.navigate(['/user/login']);

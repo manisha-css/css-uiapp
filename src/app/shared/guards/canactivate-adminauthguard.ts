@@ -8,7 +8,7 @@ import { AlertService } from '../alert/alert.service';
 import { ConstantService } from '../constant.service';
 
 @Injectable()
-export class CanActivateUserAuthGuard implements CanActivate {
+export class CanActivateAdminAuthGuard implements CanActivate {
   constructor(
     private router: Router,
     private basicUserService: BasicUserService,
@@ -17,10 +17,10 @@ export class CanActivateUserAuthGuard implements CanActivate {
   ) {}
 
   canActivate({}, state: RouterStateSnapshot) {
-    if (this.basicUserService.isLoggedIn()) {
+    if (this.basicUserService.isLoggedIn() && this.basicUserService.isAdmin()) {
       return true;
     }
-    this.alertService.error(this.constantService.AUTHGUARD_LOGIN, true);
+    this.alertService.error(this.constantService.ADMIN_AUTHGUARD_LOGIN, true);
     this.router.navigate(['/user/login'], {
       queryParams: { returnUrl: state.url }
     });

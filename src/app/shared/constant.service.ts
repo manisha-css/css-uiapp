@@ -11,6 +11,7 @@ export class ConstantService {
   public BACKEND_NOT_FOUND = 'Backend server api not found';
 
   public AUTHGUARD_LOGIN = 'This Menu option requires you to login. Please login.';
+  public ADMIN_AUTHGUARD_LOGIN = 'This Menu option requires Admin role. Please login with proper role access.';
 
   public AUTHORIZATION_HEADER_STRING = 'Authorization';
   public LOCAL_STORAGE_LOGGEDINUSER_ID = 'LoggedInUserId';

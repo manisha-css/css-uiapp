@@ -47,10 +47,7 @@ export class ContactusComponent implements OnInit, OnDestroy, AfterViewInit {
       );
   }
 
-  ngOnInit() {
-    // clear notifications
-    this.alertService.clearAllAlerts();
-  }
+  ngOnInit() {}
   onContinue() {
     this.router.navigate(['/home']);
   }

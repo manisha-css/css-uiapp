@@ -8,45 +8,13 @@ Visual Studio Code.
 
 ## Min Extensions required:
 
-Beautify
-Prettier
-TSLint
+a) Beautify
+b) Prettier
+c) TSLint
 
 ## IDE Settings:
 
-Update VS Code settings.json
-Either global settings or project specific under /.vscode/settings.json)
-
-{
-"workbench.colorTheme": "Default Light+",
-"gitlens.advanced.messages": {
-"suppressShowKeyBindingsNotice": true
-},
-"typescript.updateImportsOnFileMove.enabled": "always",
-"window.zoomLevel": 0,
-"editor.hover.enabled": false,
-"[typescript]": {
-"editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[javascript]": {
-"editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[json]": {
-"editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[jsonc]": {
-"editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[css]": {
-"editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[html]": {
-"editor.defaultFormatter": "HookyQR.beautify"
-},
-"editor.formatOnSave": true,
-"vsicons.projectDetection.autoReload": true,
-"npm.enableScriptExplorer": true
-}
+Inside /.vscode/settings.json, basic settings required for this project is stored.
 
 ## Git repo:
 
@@ -56,9 +24,9 @@ https://github.com/manisha-css/css-uiapp
 
 - Initialization
 - Layout
-  Body
-  Header
-  Footer
+  a) Body
+  b) Header
+  c) Footer
 - Health check
 - Debugging
 - Code Format & Code quality
@@ -72,22 +40,21 @@ https://github.com/manisha-css/css-uiapp
 - I18n
 - Convert app into modular
 - Basic place holders for
-  Home
-  About Us
-  Privacy Policy
-  Terms & Conditions
+  a) Home
+  b) About Us
+  c) Privacy Policy
+  d) Terms & Conditions
 - Auth Guards
 - Http Auth Interceptors
-- JWT Auth Service
 - User Module
-  User Registration
-  Verification vi code
-  Re-Send Verification code
-  Forget password
-  Login
-  Logout
-  My Profile
-  Change password
+  a) User Registration
+  b) Verification vi code
+  c) Re-Send Verification code
+  d) Forget password
+  e) Login - JWT Authentication
+  f) Logout
+  g) My Profile
+  h) Change password
 - Contact Us module
 
 ## Prerequisite:

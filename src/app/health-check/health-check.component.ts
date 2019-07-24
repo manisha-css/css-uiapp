@@ -16,7 +16,6 @@ export class HealthCheckComponent implements OnInit {
   constructor(private logger: NGXLogger, private healthCheckService: HealthCheckService, public alertService: AlertService) {}
 
   ngOnInit() {
-    this.alertService.clearAllAlerts();
     this.getServerHealthCheck();
   }
 

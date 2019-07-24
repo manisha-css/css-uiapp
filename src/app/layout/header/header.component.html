@@ -7,6 +7,9 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/home']">Home</a>
       </li>
+      <li *ngIf="basicUserService.isAdmin()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+      </li>
     </ul>
     <ul class="nav navbar-nav ml-auto">
       <button type="button" class="btn" (click)="introMethod()"><i class="fa fa-question-circle-o fa-lg fa-help"></i></button>

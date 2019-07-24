@@ -59,9 +59,7 @@ export class VerificationFormComponent implements OnInit, OnDestroy, AfterViewIn
       );
   }
 
-  ngOnInit() {
-    this.alertService.clearAllAlerts();
-  }
+  ngOnInit() {}
   onContinue() {
     this.router.navigate(['/user/login']);
   }

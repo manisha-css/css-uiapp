@@ -51,15 +51,17 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
-    // clear notifications
-    this.alertService.clearAllAlerts();
     const loggedInUserId = localStorage.getItem(this.constantService.LOCAL_STORAGE_LOGGEDINUSER_ID);
     this.userService.getUserById(loggedInUserId).subscribe(
       (response: User) => {
         this.user = response;
         this.logger.debug('User info retrieved successfully');
       },
-      () => {}
+      () => {
+        this.router.navigate(['/user/login'], {
+          queryParams: { returnUrl: '/user/myprofile' }
+        });
+      }
     );
   }
   onContinue() {

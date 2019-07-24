@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
     HomeModule,
     MiscModule,
     UserModule,
+    AdminModule,
     AppRoutingModule // must be imported as the last module as it contains the fallback route
   ],
   providers: [],

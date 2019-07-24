@@ -15,6 +15,7 @@ import { AuthService } from './httpAuth/auth.service';
 import { HttpAuthInterceptor } from './httpAuth/http-auth.interceptor';
 import { LoaderComponent } from './loader/loader.component';
 import { SharedRoutingModule } from './shared-routing.module';
+import { CanActivateAdminAuthGuard } from './guards/canactivate-adminauthguard';
 
 @NgModule({
   declarations: [AlertComponent, ExceptionsComponent, ExceptionGeneralComponent, LoaderComponent],
@@ -41,6 +42,7 @@ import { SharedRoutingModule } from './shared-routing.module';
     },
     ConstantService,
     CanActivateUserAuthGuard,
+    CanActivateAdminAuthGuard,
     RedirectGuard,
     AuthService
   ],

@@ -63,9 +63,16 @@ export class BasicUserService {
   }
 
   isLoggedIn(): boolean {
-    if (!this.checkLocalCache()) {
-      return false;
+    if (this.checkLocalCache()) {
+      return true;
     }
-    return true;
+    return false;
+  }
+
+  isAdmin(): boolean {
+    if (this.basicuser && this.basicuser.roles) {
+      return this.basicuser.roles.includes('ADMIN');
+    }
+    return false;
   }
 }

@@ -10,6 +10,8 @@ export class User extends BasicUser {
   oldPassword: string;
   newPassword: string;
 
+  publicProfile: string;
+
   constructor() {
     super();
   }

@@ -54,7 +54,6 @@ export class VerificationResendComponent implements OnInit, OnDestroy, AfterView
 
   ngOnInit() {
     this.showSuccessMsg = false;
-    this.alertService.clearAllAlerts();
   }
 
   onContinue() {
