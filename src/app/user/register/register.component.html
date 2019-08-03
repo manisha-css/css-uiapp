@@ -12,40 +12,10 @@
           <div>
             <app-alert></app-alert>
           </div>
-          <div class="form-group form-row">
-            <label for="givenName">* Name</label>
-            <input type="text" class="form-control" id="givenName" name="givenName" required
-              maxlength="{{constantService.INPUTTEXT_MAXLENGTH_REGULAR}}" pattern={{constantService.ALPHA_PATTERN_WITHSPACE}}
-              [(ngModel)]="user.givenName" #givenName="ngModel" />
-            <div [hidden]="givenName.valid || givenName.pristine" class="alert alert-danger">
-              Name {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_ALPHA_PATTERN_WITHSPACE}}.
-            </div>
-          </div>
-          <div class="form-group form-row">
-            <label for="email">* User name (Your email):</label>
-            <input type="text" class="form-control" id="email" name="email" required maxlength="{{constantService.INPUTTEXT_MAXLENGTH_EMAIL}}"
-              pattern={{constantService.EMAIL_PATTERN}} [(ngModel)]="user.userName" #email="ngModel" />
-            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-              User name {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_EMAIL_PATTERN}}.
-            </div>
-          </div>
-          <div class="form-group form-row">
-            <label for="userPassword">* Password:</label>
-            <input type="password" class="form-control" id="userPassword" name="userPassword" required
-              maxlength="{{constantService.PASSWORD_MAXLENGTH}}" pattern={{constantService.SECRETKEY_PATTERN}} [(ngModel)]="user.userPassword"
-              #userPassword="ngModel" />
-            <div [hidden]="userPassword.valid || userPassword.pristine" class="alert alert-danger">
-              Password {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_SECRETKEY_PATTERN}}
-            </div>
-          </div>
-          <div class="form-group form-row">
-            <label for="cnfPassword">* Confirm Password:</label>
-            <input type="password" class="form-control" id="cnfPassword" name="cnfPassword" required [(ngModel)]="user.confirmPassword"
-              #cnfPassword="ngModel" [equal]="user.userPassword" />
-            <div [hidden]="cnfPassword.valid || cnfPassword.pristine" class="alert alert-danger">
-              Confirm password need to match with new password.
-            </div>
-          </div>
+          <app-form-input-givenname [givenName]="user.givenName"></app-form-input-givenname>
+          <app-form-input-username [userName]="user.userName"></app-form-input-username>
+          <app-form-input-password [userPassword]="user.userPassword"></app-form-input-password>
+          <app-form-input-cnfpassword [confirmPassword]="user.confirmPassword"></app-form-input-cnfpassword>
           <div class="form-group">
             <label for="acceptTC"></label>
             <input type="checkbox" id="acceptTC" name="acceptTC" [(ngModel)]="user.acceptTC" #acceptTC="ngModel" required pattern="true">
@@ -58,7 +28,7 @@
           </div>
           <div class="form-group" align="center">
             <button class="form-control btn btn-success" [disabled]="!registerForm.valid || isLoading">Register
-            </button>
+            </button>form: {{this.registerForm.value | json}}
           </div>
           <div class="form-group">
             Already have signed up?

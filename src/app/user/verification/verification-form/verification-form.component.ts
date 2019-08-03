@@ -40,8 +40,8 @@ export class VerificationFormComponent implements OnInit, OnDestroy, AfterViewIn
 
   onSubmit() {
     this.logger.debug('Submit resend verification link');
-
     this.isLoading = true;
+    this.user.userName = this.verificationCodeForm.value.email;
     this.userService
       .verifyEmailViaCode(this.user)
       .pipe(

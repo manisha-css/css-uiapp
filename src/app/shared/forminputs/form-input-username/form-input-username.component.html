@@ -1,0 +1,8 @@
+<div class="form-group form-row">
+  <label for="email">* User name (Your email):</label>
+  <input type="text" class="form-control" id="email" name="email" required maxlength="{{constantService.INPUTTEXT_MAXLENGTH_EMAIL}}"
+    pattern={{constantService.EMAIL_PATTERN}} [(ngModel)]="userName" #email="ngModel" />
+  <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+    User name {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_EMAIL_PATTERN}}.
+  </div>
+</div>

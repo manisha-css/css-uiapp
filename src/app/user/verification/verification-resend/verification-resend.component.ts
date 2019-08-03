@@ -33,8 +33,8 @@ export class VerificationResendComponent implements OnInit, OnDestroy, AfterView
 
   onSubmit() {
     this.logger.debug('Submit resend verification code');
-
     this.isLoading = true;
+    this.user.userName = this.resendVerificationCodeForm.value.email;
     this.userService
       .resendVerificationCode(this.user)
       .pipe(

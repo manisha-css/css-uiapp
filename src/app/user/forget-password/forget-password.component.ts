@@ -25,6 +25,7 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy, AfterViewInit
 
   onSubmit() {
     this.isLoading = true;
+    this.user.userName = this.forgetPasswordForm.value.email;
     this.userService
       .forgetPassword(this.user)
       .pipe(

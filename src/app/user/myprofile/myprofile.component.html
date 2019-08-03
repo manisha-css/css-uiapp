@@ -12,15 +12,7 @@
           <div class="form-group form-row">
             <label>UserName (Email):</label> {{user.userName}}
           </div>
-          <div class="form-group">
-            <label for="givenName">* Name</label>
-            <input type="text" class="form-control" id="givenName" name="givenName" required
-              maxlength="{{constantService.INPUTTEXT_MAXLENGTH_REGULAR}}" pattern={{constantService.ALPHA_PATTERN_WITHSPACE}}
-              [(ngModel)]="user.givenName" #givenName="ngModel" />
-            <div [hidden]="givenName.valid || givenName.pristine" class="alert alert-danger">
-              Name {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_ALPHA_PATTERN_WITHSPACE}}.
-            </div>
-          </div>
+          <app-form-input-givenname [givenName]="user.givenName"></app-form-input-givenname>
           <div class="form-group">
             <label for="publicProfile">Public profile</label>
             <textarea class="form-control" id="publicProfile" name="publicProfile" rows="{{constantService.TEXTAREA_ROWS}}"

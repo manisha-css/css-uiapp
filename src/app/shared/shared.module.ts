@@ -16,6 +16,7 @@ import { HttpAuthInterceptor } from './httpAuth/http-auth.interceptor';
 import { LoaderComponent } from './loader/loader.component';
 import { SharedRoutingModule } from './shared-routing.module';
 import { CanActivateAdminAuthGuard } from './guards/canactivate-adminauthguard';
+import { ForminputsModule } from './forminputs/forminputs.module';
 
 @NgModule({
   declarations: [AlertComponent, ExceptionsComponent, ExceptionGeneralComponent, LoaderComponent],
@@ -26,6 +27,7 @@ import { CanActivateAdminAuthGuard } from './guards/canactivate-adminauthguard';
     }),
     CommonModule,
     HttpClientModule,
+    ForminputsModule,
     SharedRoutingModule
   ],
   providers: [
@@ -46,6 +48,6 @@ import { CanActivateAdminAuthGuard } from './guards/canactivate-adminauthguard';
     RedirectGuard,
     AuthService
   ],
-  exports: [AlertComponent, LoaderComponent]
+  exports: [AlertComponent, LoaderComponent, ForminputsModule]
 })
 export class SharedModule {}

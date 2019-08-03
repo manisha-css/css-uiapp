@@ -1,0 +1,8 @@
+<div class="form-group form-row">
+  <label for="fullname">* Name</label>
+  <input type="text" class="form-control" id="fullname" name="fullname" required maxlength="{{constantService.INPUTTEXT_MAXLENGTH_REGULAR}}"
+    pattern={{constantService.ALPHA_PATTERN_WITHSPACE}} [(ngModel)]="givenName" #fullname="ngModel" />
+  <div [hidden]="fullname.valid || fullname.pristine" class="alert alert-danger">
+    Name {{constantService.MESSAGE_REQUIRED}} and {{constantService.MESSAGE_ALPHA_PATTERN_WITHSPACE}}.
+  </div>
+</div>
