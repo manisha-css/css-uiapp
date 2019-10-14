@@ -17,6 +17,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { SharedRoutingModule } from './shared-routing.module';
 import { CanActivateAdminAuthGuard } from './guards/canactivate-adminauthguard';
 import { ForminputsModule } from './forminputs/forminputs.module';
+import { SocketIOService } from './socketio/socketio.service';
 
 @NgModule({
   declarations: [AlertComponent, ExceptionsComponent, ExceptionGeneralComponent, LoaderComponent],
@@ -46,7 +47,8 @@ import { ForminputsModule } from './forminputs/forminputs.module';
     CanActivateUserAuthGuard,
     CanActivateAdminAuthGuard,
     RedirectGuard,
-    AuthService
+    AuthService,
+    SocketIOService
   ],
   exports: [AlertComponent, LoaderComponent, ForminputsModule]
 })

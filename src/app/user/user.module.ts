@@ -16,6 +16,8 @@ import { UserComponent } from './user.component';
 import { UserService } from './user.service';
 import { VerificationFormComponent } from './verification/verification-form/verification-form.component';
 import { VerificationResendComponent } from './verification/verification-resend/verification-resend.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,19 @@ import { VerificationResendComponent } from './verification/verification-resend/
     UserComponent,
     MyprofileComponent,
     VerificationFormComponent,
-    VerificationResendComponent
+    VerificationResendComponent,
+    UserListComponent
   ],
-  imports: [CommonModule, UserRoutingModule, SharedModule, FormsModule, CustomFormsModule, MiscModule],
+  imports: [
+    // angular material
+    MatTableModule,
+    CommonModule,
+    UserRoutingModule,
+    SharedModule,
+    FormsModule,
+    CustomFormsModule,
+    MiscModule
+  ],
   providers: [UserService, BasicUserService]
 })
 export class UserModule {}

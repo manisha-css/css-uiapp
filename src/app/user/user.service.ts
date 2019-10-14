@@ -46,6 +46,10 @@ export class UserService {
     return this.httpClient.get<User>(this.USER_URL + '/' + id, { headers: this.constantService.addHttptHeader(true) });
   }
 
+  getAllUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.USER_URL + '/', { headers: this.constantService.addHttptHeader(true) });
+  }
+
   forgetPassword(user: User): Observable<InfoResponse> {
     const body = JSON.stringify(user);
     return this.httpClient.post<InfoResponse>(this.FORGETPASSWORD_URL, body, { headers: this.constantService.addHttptHeader(true) });

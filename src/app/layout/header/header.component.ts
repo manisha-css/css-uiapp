@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
         },
         {
           element: '#aboutus',
-          intro: 'This is about us',
+          intro: '<b><u>This is about us</u></b><br/>second line',
           position: 'right'
         },
         {

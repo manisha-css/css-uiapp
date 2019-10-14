@@ -7,6 +7,9 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/home']">Home</a>
       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/user/list']">Users</a>
+      </li>
       <li *ngIf="basicUserService.isAdmin()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/admin']">Admin</a>
       </li>

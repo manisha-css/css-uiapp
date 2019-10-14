@@ -13,6 +13,7 @@ import { HealthCheckService } from './health-check.service';
 export class HealthCheckComponent implements OnInit {
   isLoading: boolean;
   result: string;
+
   constructor(private logger: NGXLogger, private healthCheckService: HealthCheckService, public alertService: AlertService) {}
 
   ngOnInit() {

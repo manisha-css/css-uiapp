@@ -1,3 +1,4 @@
+import { SocketIOService } from './../shared/socketio/socketio.service';
 import { Injectable } from '@angular/core';
 import { ConstantService } from '../shared/constant.service';
 
@@ -5,13 +6,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { BasicUser } from './basicuser.model';
+import { OnlineUser } from './onlineuser.model';
 
 @Injectable()
 export class BasicUserService {
   basicuser: BasicUser;
-
+  onlineUsers: OnlineUser[];
+  cnt: number;
   private USER_URL = environment.WEBSERVICE_URL + '/user';
-  constructor(private httpClient: HttpClient, private constantService: ConstantService) {
+  constructor(private socketIOService: SocketIOService, private httpClient: HttpClient, private constantService: ConstantService) {
     this.basicuser = new BasicUser();
     // this is to cater for reload of the page.
     if (!this.checkLocalCache()) {
@@ -27,6 +30,16 @@ export class BasicUserService {
         }
       );
     }
+    this.getOnlineUsers().subscribe(
+      response => {
+        this.onlineUsers = response;
+      },
+      () => {}
+    );
+    this.cnt = 0;
+    this.socketIOService.getMessages().subscribe((data: any) => {
+      console.log(data.userId);
+    });
   }
 
   getBasicUserById(id: string): Observable<BasicUser> {
@@ -74,5 +87,9 @@ export class BasicUserService {
       return this.basicuser.roles.includes('ADMIN');
     }
     return false;
+  }
+
+  getOnlineUsers(): Observable<OnlineUser[]> {
+    return this.httpClient.get<OnlineUser[]>(this.USER_URL + '/online/all', { headers: this.constantService.addHttptHeader(true) });
   }
 }
