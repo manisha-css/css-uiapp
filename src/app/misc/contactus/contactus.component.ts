@@ -49,9 +49,7 @@ export class ContactusComponent implements OnInit, OnDestroy, AfterViewInit {
       );
   }
 
-  ngOnInit() {
-    this.headerService.currentPageId = 'CONTACTUS';
-  }
+  ngOnInit() {}
   onContinue() {
     this.router.navigate(['/home']);
   }

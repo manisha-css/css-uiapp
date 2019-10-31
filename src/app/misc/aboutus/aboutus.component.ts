@@ -8,7 +8,5 @@ import { Component, OnInit } from '@angular/core';
 export class AboutusComponent implements OnInit {
   constructor(private headerService: HeaderService) {}
 
-  ngOnInit() {
-    this.headerService.currentPageId = 'ABOUTUS';
-  }
+  ngOnInit() {}
 }
