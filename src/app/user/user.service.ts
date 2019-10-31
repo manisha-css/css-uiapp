@@ -10,7 +10,6 @@ import { InfoResponse } from '../shared/inforresponse.model';
 
 @Injectable()
 export class UserService {
-  public currentLang: string;
   displayDialog: boolean;
   private USER_URL = environment.WEBSERVICE_URL + '/user';
   private REGISTER_URL = this.USER_URL + '/register';
