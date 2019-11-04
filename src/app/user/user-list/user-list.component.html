@@ -1,5 +1,3 @@
-<p>user-list works!</p>
-{{users | json}}
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
@@ -15,10 +13,10 @@
   <ng-container matColumnDef="givenName">
     <th mat-header-cell *matHeaderCellDef> Name </th>
     <td mat-cell *matCellDef="let user">
-      <ng-container *ngIf="user.accountLocked">
+      <ng-container *ngIf="basicUserService.onlineusers.indexOf(user.id) > -1">
         Locked
       </ng-container>
-      <ng-container *ngIf="!(user.accountLocked)">
+      <ng-container *ngIf="!(basicUserService.onlineusers.indexOf(user.id) > -1)">
         NOT Locked
       </ng-container>
       {{user.givenName}}

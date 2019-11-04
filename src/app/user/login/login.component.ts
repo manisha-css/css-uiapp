@@ -9,6 +9,7 @@ import { ConstantService } from 'src/app/shared/constant.service';
 import { BasicUserService } from '../basicuser.service';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
+import { SocketIOService } from 'src/app/shared/socketio/socketio.service';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     private router: Router,
     private userService: UserService,
     private basicUserService: BasicUserService,
+    private socketIOService: SocketIOService,
     public alertService: AlertService,
     public constantService: ConstantService
   ) {}
@@ -55,6 +57,8 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
           const jwtToken = headers.get(this.constantService.AUTHORIZATION_HEADER_STRING);
           this.basicUserService.setLocalCache(jwtToken, response.body.result);
           this.router.navigateByUrl(this.returnUrl);
+          // emit the message to server
+          this.socketIOService.emitMessage('loginsuccess', this.basicUserService.basicuser);
         },
         () => {}
       );

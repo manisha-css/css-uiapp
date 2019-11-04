@@ -1,4 +1,3 @@
-import { HeaderService } from './../../layout/header/header.service';
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -24,7 +23,6 @@ export class ContactusComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private router: Router,
-    private headerService: HeaderService,
     public contactusService: ContactusService,
     public alertService: AlertService,
     public constantService: ConstantService

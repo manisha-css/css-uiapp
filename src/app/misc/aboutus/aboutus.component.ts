@@ -1,4 +1,3 @@
-import { HeaderService } from './../../layout/header/header.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './aboutus.component.html'
 })
 export class AboutusComponent implements OnInit {
-  constructor(private headerService: HeaderService) {}
+  constructor() {}
 
   ngOnInit() {}
 }

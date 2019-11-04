@@ -6,13 +6,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { BasicUser } from './basicuser.model';
-import { OnlineUser } from './onlineuser.model';
 
 @Injectable()
 export class BasicUserService {
   basicuser: BasicUser;
-  onlineUsers: OnlineUser[];
-  cnt: number;
+  onlineusers: number[];
   private USER_URL = environment.WEBSERVICE_URL + '/user';
   constructor(private socketIOService: SocketIOService, private httpClient: HttpClient, private constantService: ConstantService) {
     this.basicuser = new BasicUser();
@@ -24,21 +22,21 @@ export class BasicUserService {
       this.getBasicUserById(loggedInUserId).subscribe(
         response => {
           this.basicuser = response;
+          this.socketIOService.emitMessage('loginsuccess', this.basicuser);
         },
         () => {
           this.clearLocalCache();
         }
       );
     }
-    this.getOnlineUsers().subscribe(
-      response => {
-        this.onlineUsers = response;
-      },
-      () => {}
-    );
-    this.cnt = 0;
-    this.socketIOService.getMessages().subscribe((data: any) => {
-      console.log(data.userId);
+    this.socketIOService.observeRefreshOnlineUsersListMessages().subscribe(() => {
+      this.getOnlineUsers().subscribe(
+        (response: number[]) => {
+          this.onlineusers = response;
+          console.log('=============== get new online users =======' + JSON.stringify(this.onlineusers));
+        },
+        () => {}
+      );
     });
   }
 
@@ -89,7 +87,7 @@ export class BasicUserService {
     return false;
   }
 
-  getOnlineUsers(): Observable<OnlineUser[]> {
-    return this.httpClient.get<OnlineUser[]>(this.USER_URL + '/online/all', { headers: this.constantService.addHttptHeader(true) });
+  getOnlineUsers(): Observable<number[]> {
+    return this.httpClient.get<number[]>(this.USER_URL + '/online/all', { headers: this.constantService.addHttptHeader(true) });
   }
 }

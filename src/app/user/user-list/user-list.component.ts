@@ -1,3 +1,4 @@
+import { BasicUserService } from 'src/app/user/basicuser.service';
 import { NGXLogger } from 'ngx-logger';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
@@ -12,7 +13,7 @@ export class UserListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'givenName', 'userName', 'actions'];
   dataSource = new MatTableDataSource<User>();
   users: User[];
-  constructor(private userService: UserService, private logger: NGXLogger) {}
+  constructor(public basicUserService: BasicUserService, private userService: UserService, private logger: NGXLogger) {}
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe(
