@@ -15,8 +15,8 @@
       </li>
     </ul>
     <ul class="nav navbar-nav ml-auto">
-      <button type="button" class="btn" (click)="introMethod()"><i class="fa fa-question-circle-o fa-lg fa-help"></i></button>
-      <select id="selectlang" (change)="onChangeLang()" [(ngModel)]="selectedLang">
+      <button type="button" class="btn" (click)="headerService.introMethod(true)"><i class="fa fa-question-circle-o fa-lg fa-help"></i></button>
+      <select id="selectlang" (change)="onChangeLang()" [(ngModel)]="headerService.selectedLang">
         <option *ngFor="let language of languageList" value={{language.code}}>
           {{language.label}}</option>
       </select>

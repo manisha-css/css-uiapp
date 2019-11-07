@@ -14,6 +14,10 @@ import { UserService } from '../user.service';
   templateUrl: './myprofile.component.html'
 })
 export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
+  file: File;
+  url: string = null;
+  fileext: string;
+
   user = new User();
   isLoading: boolean;
   showSuccessMsg: boolean;
@@ -31,10 +35,18 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {}
 
   onSubmit() {
-    this.logger.debug('Submit MyProfile');
+    if (this.file === null || this.file === undefined) {
+      this.alertService.error('Please select file');
+      return;
+    }
     this.isLoading = true;
+    const formData = new FormData();
+    formData.append('file', this.file);
+    formData.append('fileType', 'IMAGE');
+    formData.append('publicProfile', this.user.publicProfile);
+    this.logger.debug('Submit MyProfile');
     this.userService
-      .saveMyProfile(this.user)
+      .saveMyProfile(formData)
       .pipe(
         finalize(() => {
           this.isFormSubmit = true;
@@ -79,5 +91,18 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy() {
     this.formChangesSubscription.unsubscribe();
+  }
+
+  onFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      const filename = event.target.files[0].name;
+      this.fileext = filename.substr(filename.lastIndexOf('.') + 1);
+      const reader = new FileReader();
+      reader.onload = (loadevent: any) => {
+        this.url = loadevent.target.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+      this.file = event.target.files[0];
+    }
   }
 }

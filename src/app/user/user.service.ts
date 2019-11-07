@@ -71,8 +71,7 @@ export class UserService {
     });
   }
 
-  saveMyProfile(user: User): Observable<InfoResponse> {
-    const body = JSON.stringify(user);
-    return this.httpClient.post<InfoResponse>(this.MYPROFILE_URL, body, { headers: this.constantService.addHttptHeader(true) });
+  saveMyProfile(formData: FormData): Observable<InfoResponse> {
+    return this.httpClient.post<InfoResponse>(this.MYPROFILE_URL, formData, { headers: this.constantService.addHttptHeader(true) });
   }
 }
