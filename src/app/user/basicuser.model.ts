@@ -3,5 +3,6 @@ export class BasicUser {
   userName: string;
   givenName: string;
   roles: string[];
+  profileImage: string;
   constructor() {}
 }

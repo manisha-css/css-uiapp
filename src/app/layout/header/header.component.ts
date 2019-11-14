@@ -1,16 +1,15 @@
-// import { InfoResponse } from './../../shared/inforresponse.model';
 import { HeaderService } from './header.service';
-// import { PlatformLocation } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BasicUserService } from 'src/app/user/basicuser.service';
-// import * as IntroJs from 'intro.js/intro.js';
-// import { NGXLogger } from 'ngx-logger';
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
+  SOCKET_URL = environment.SOCKET_URL;
   selectedLang: string;
   languageList = [{ code: 'en', label: 'English' }, { code: 'fr', label: 'French' }];
 

@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { ConstantService } from '../shared/constant.service';
 import { User } from './user.model';
 
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 import { Observable } from 'rxjs/internal/Observable';
 import { InfoResponse } from '../shared/inforresponse.model';
+import { PlatformLocation } from '@angular/common';
 
 @Injectable()
 export class UserService {
@@ -21,7 +22,7 @@ export class UserService {
 
   private MYPROFILE_URL = this.USER_URL + '/myprofile';
 
-  constructor(private httpClient: HttpClient, private constantService: ConstantService) {}
+  constructor(private platformLocation: PlatformLocation, private httpClient: HttpClient, private constantService: ConstantService) {}
 
   register(user: User): Observable<InfoResponse> {
     const body = JSON.stringify(user);
@@ -72,6 +73,9 @@ export class UserService {
   }
 
   saveMyProfile(formData: FormData): Observable<InfoResponse> {
-    return this.httpClient.post<InfoResponse>(this.MYPROFILE_URL, formData, { headers: this.constantService.addHttptHeader(true) });
+    let headers = new HttpHeaders();
+    const selectedLang = (this.platformLocation as any).location.pathname.substring(1, 3);
+    headers = headers.append('Accept-Language', selectedLang).append('Accept', 'application/json');
+    return this.httpClient.post<InfoResponse>(this.MYPROFILE_URL, formData, { headers });
   }
 }

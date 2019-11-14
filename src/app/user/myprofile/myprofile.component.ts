@@ -1,3 +1,4 @@
+import { BasicUserService } from './../basicuser.service';
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,6 +10,7 @@ import { ConstantService } from '../../shared/constant.service';
 import { InfoResponse } from '../../shared/inforresponse.model';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-myprofile',
   templateUrl: './myprofile.component.html'
@@ -26,11 +28,14 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
   isFormSubmit: boolean;
   infoResponse: InfoResponse;
 
+  SOCKET_URL = environment.SOCKET_URL;
+
   constructor(
     private router: Router,
     private userService: UserService,
     public alertService: AlertService,
     private logger: NGXLogger,
+    public basicUserService: BasicUserService,
     public constantService: ConstantService
   ) {}
 
@@ -42,7 +47,7 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
     this.isLoading = true;
     const formData = new FormData();
     formData.append('file', this.file);
-    formData.append('fileType', 'IMAGE');
+    formData.append('givenName', this.myprofileForm.value.fullName);
     formData.append('publicProfile', this.user.publicProfile);
     this.logger.debug('Submit MyProfile');
     this.userService

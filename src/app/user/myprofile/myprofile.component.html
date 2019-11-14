@@ -24,7 +24,12 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="fileInput">Current profile picture: </label>
+            <img src="{{SOCKET_URL}}profileimage/{{basicUserService.basicuser.profileImage}}" height="30px" width="30px" alt="profile" />
+          </div>
+          <div class="form-group">
             <label for="fileInput">Select File: </label>
+            {{user.profileImage}}
             <input type="file" class="form-control" id="fileInput" name="fileInput" (change)="onFileChange($event)" placeholder="Upload file"
               accept=".gif,.jpg,.jpeg,.png">
             <div *ngIf="this.url">

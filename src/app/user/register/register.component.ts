@@ -31,6 +31,10 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
   onSubmit() {
     this.isLoading = true;
     this.user.userName = this.registerForm.value.email;
+    this.user.givenName = this.registerForm.value.fullName;
+    this.user.userPassword = this.registerForm.value.password;
+    this.user.confirmPassword = this.registerForm.value.cnfPassword;
+
     this.userService
       .register(this.user)
       .pipe(

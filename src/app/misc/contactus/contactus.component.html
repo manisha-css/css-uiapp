@@ -18,7 +18,7 @@
               [(ngModel)]="contactus.givenName" #givenName="ngModel" />
             <div [hidden]="givenName.valid || givenName.pristine" class="alert alert-danger">
               Name {{constantService.MESSAGE_REQUIRED}} and
-              {{constantService.MESSAGE_ALPHA_PATTERN_WITHSPACE}}.
+              {{constantService.ALPHANUMERIC_SOMESPECIALCHARS_PATTERN}}.
             </div>
           </div>
           <div class="form-group">
