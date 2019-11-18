@@ -72,7 +72,12 @@ export class UserService {
     });
   }
 
-  saveMyProfile(formData: FormData): Observable<InfoResponse> {
+  saveMyProfile(user: User): Observable<InfoResponse> {
+    const body = JSON.stringify(user);
+    return this.httpClient.post<InfoResponse>(this.MYPROFILE_URL, body, { headers: this.constantService.addHttptHeader(true) });
+  }
+
+  uploadProfile(formData: FormData): Observable<InfoResponse> {
     let headers = new HttpHeaders();
     const selectedLang = (this.platformLocation as any).location.pathname.substring(1, 3);
     headers = headers.append('Accept-Language', selectedLang).append('Accept', 'application/json');

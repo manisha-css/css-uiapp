@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { VerificationFormComponent } from './verification/verification-form/verification-form.component';
 import { VerificationResendComponent } from './verification/verification-resend/verification-resend.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UploadProfileComponent } from './uploadprofile/uploadprofile.component';
 
 /**
  * Created by manisha on 4/21/17.
@@ -32,6 +33,10 @@ export const USER_ROUTES: Routes = [
     path: 'myprofile',
     component: MyprofileComponent,
     canActivate: [CanActivateUserAuthGuard]
+  },
+  {
+    path: 'uploadprofile',
+    component: UploadProfileComponent
   },
   {
     path: 'list',

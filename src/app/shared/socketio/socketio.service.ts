@@ -29,7 +29,7 @@ export class SocketIOService {
         observer.next();
       });
       return () => {
-        this.socket.disconnect();
+        // this.socket.disconnect();
       };
     });
     return observable;

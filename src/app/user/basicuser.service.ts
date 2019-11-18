@@ -18,6 +18,15 @@ export class BasicUserService {
     if (!this.checkLocalCache()) {
       this.clearLocalCache();
     } else {
+      this.socketIOService.observeRefreshOnlineUsersListMessages().subscribe(() => {
+        this.getOnlineUsers().subscribe(
+          (response: number[]) => {
+            this.onlineusers = response;
+            console.log('=============== get new online users =======' + JSON.stringify(this.onlineusers));
+          },
+          () => {}
+        );
+      });
       const loggedInUserId = localStorage.getItem(this.constantService.LOCAL_STORAGE_LOGGEDINUSER_ID);
       this.getBasicUserById(loggedInUserId).subscribe(
         response => {
@@ -29,15 +38,6 @@ export class BasicUserService {
         }
       );
     }
-    this.socketIOService.observeRefreshOnlineUsersListMessages().subscribe(() => {
-      this.getOnlineUsers().subscribe(
-        (response: number[]) => {
-          this.onlineusers = response;
-          console.log('=============== get new online users =======' + JSON.stringify(this.onlineusers));
-        },
-        () => {}
-      );
-    });
   }
 
   getBasicUserById(id: string): Observable<BasicUser> {

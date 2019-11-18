@@ -18,6 +18,7 @@ import { VerificationFormComponent } from './verification/verification-form/veri
 import { VerificationResendComponent } from './verification/verification-resend/verification-resend.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { UploadProfileComponent } from './uploadprofile/uploadprofile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatTableModule } from '@angular/material/table';
     MyprofileComponent,
     UserComponent,
     MyprofileComponent,
+    UploadProfileComponent,
     VerificationFormComponent,
     VerificationResendComponent,
     UserListComponent

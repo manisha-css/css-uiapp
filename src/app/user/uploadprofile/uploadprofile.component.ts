@@ -1,4 +1,4 @@
-import { BasicUserService } from './../basicuser.service';
+import { BasicUserService } from '../basicuser.service';
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,10 +12,10 @@ import { User } from '../user.model';
 import { UserService } from '../user.service';
 import { environment } from '../../../environments/environment';
 @Component({
-  selector: 'app-myprofile',
-  templateUrl: './myprofile.component.html'
+  selector: 'app-uploadprofile',
+  templateUrl: './uploadprofile.component.html'
 })
-export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
+export class UploadProfileComponent implements OnInit, OnDestroy, AfterViewInit {
   file: File;
   url: string = null;
   fileext: string;
@@ -23,7 +23,7 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
   user = new User();
   isLoading: boolean;
   showSuccessMsg: boolean;
-  @ViewChild('myprofileForm', { static: false }) public myprofileForm: NgForm;
+  @ViewChild('uploadprofileForm', { static: false }) public uploadprofileForm: NgForm;
   formChangesSubscription: Subscription;
   isFormSubmit: boolean;
   infoResponse: InfoResponse;
@@ -40,12 +40,16 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {}
 
   onSubmit() {
+    if (this.file === null || this.file === undefined) {
+      this.alertService.error('Please select file');
+      return;
+    }
     this.isLoading = true;
-    this.isLoading = true;
-    this.user.givenName = this.myprofileForm.value.fullName;
-    this.logger.debug('Submit MyProfile');
+    const formData = new FormData();
+    formData.append('file', this.file);
+    this.logger.debug('Upload Profile');
     this.userService
-      .saveMyProfile(this.user)
+      .uploadProfile(formData)
       .pipe(
         finalize(() => {
           this.isFormSubmit = true;
@@ -80,7 +84,7 @@ export class MyprofileComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.formChangesSubscription = this.myprofileForm.form.valueChanges.subscribe(() => {
+    this.formChangesSubscription = this.uploadprofileForm.form.valueChanges.subscribe(() => {
       if (this.isFormSubmit) {
         this.alertService.clearAllAlerts();
         this.isFormSubmit = false;
