@@ -14,21 +14,20 @@ export class BasicUserService {
   private USER_URL = environment.WEBSERVICE_URL + '/user';
   constructor(private socketIOService: SocketIOService, private httpClient: HttpClient, private constantService: ConstantService) {
     this.basicuser = new BasicUser();
+    this.socketIOService.observeRefreshOnlineUsersListMessages().subscribe(() => {
+      this.getOnlineUsers().subscribe(
+        (response: number[]) => {
+          this.onlineusers = response;
+          console.log('=============== get new online users =======' + JSON.stringify(this.onlineusers));
+        },
+        () => {}
+      );
+    });
     // this is to cater for reload of the page.
     if (!this.checkLocalCache()) {
       this.clearLocalCache();
     } else {
-      this.socketIOService.observeRefreshOnlineUsersListMessages().subscribe(() => {
-        this.getOnlineUsers().subscribe(
-          (response: number[]) => {
-            this.onlineusers = response;
-            console.log('=============== get new online users =======' + JSON.stringify(this.onlineusers));
-          },
-          () => {}
-        );
-      });
-      const loggedInUserId = localStorage.getItem(this.constantService.LOCAL_STORAGE_LOGGEDINUSER_ID);
-      this.getBasicUserById(loggedInUserId).subscribe(
+      this.getBasicUserById().subscribe(
         response => {
           this.basicuser = response;
           this.socketIOService.emitMessage('loginsuccess', this.basicuser);
@@ -40,8 +39,8 @@ export class BasicUserService {
     }
   }
 
-  getBasicUserById(id: string): Observable<BasicUser> {
-    return this.httpClient.get<BasicUser>(this.USER_URL + '/basicuser/' + id, { headers: this.constantService.addHttptHeader(false) });
+  getBasicUserById(): Observable<BasicUser> {
+    return this.httpClient.get<BasicUser>(this.USER_URL + '/basicuser/info', { headers: this.constantService.addHttptHeader(false) });
   }
 
   checkLocalCache(): boolean {

@@ -26,6 +26,6 @@ export class UserListComponent implements OnInit {
     );
   }
   onEdit(user: User) {
-    alert(JSON.stringify(user));
+    alert('To be inplemneted: ' + JSON.stringify(user));
   }
 }

@@ -21,7 +21,7 @@ export class UserService {
   private CHANGEPASSWORD_URL = this.USER_URL + '/changePassword';
 
   private MYPROFILE_URL = this.USER_URL + '/myprofile';
-
+  private UPLOADPROFILE_URL = this.USER_URL + '/uploadprofile';
   constructor(private platformLocation: PlatformLocation, private httpClient: HttpClient, private constantService: ConstantService) {}
 
   register(user: User): Observable<InfoResponse> {
@@ -80,7 +80,7 @@ export class UserService {
   uploadProfile(formData: FormData): Observable<InfoResponse> {
     let headers = new HttpHeaders();
     const selectedLang = (this.platformLocation as any).location.pathname.substring(1, 3);
-    headers = headers.append('Accept-Language', selectedLang).append('Accept', 'application/json');
-    return this.httpClient.post<InfoResponse>(this.MYPROFILE_URL, formData, { headers });
+    headers = headers.append('Accept-Language', selectedLang);
+    return this.httpClient.post<InfoResponse>(this.UPLOADPROFILE_URL, formData, { headers });
   }
 }
